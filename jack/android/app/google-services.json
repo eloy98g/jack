@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "142482699095",
+    "project_id": "jack-5dbcf",
+    "storage_bucket": "jack-5dbcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142482699095:android:ea1864493bbae07dac4412",
+        "android_client_info": {
+          "package_name": "com.eloy.jack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142482699095-mkmgh3hj371k2ev0vsqe7a9vmcopa1qc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6N1KEVXqSuKZGZfkVTdT2SYr6MkrWALQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142482699095-mkmgh3hj371k2ev0vsqe7a9vmcopa1qc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
