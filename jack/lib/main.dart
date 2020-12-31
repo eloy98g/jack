@@ -10,6 +10,22 @@ void main() async {
   runApp(JackApp());
 }
 
+// class JackApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProxyProvider(
+//           create: (_) => null,
+//           update: (_, AdminRepository repository, __) => CentersRepository(
+//             CentersService(),
+//             cityId: repository.admin?.cityId,
+//           ),
+//         ),
+//       ]
+//   }
+// }
+
 class JackApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,3 +35,4 @@ class JackApp extends StatelessWidget {
     );
   }
 }
+

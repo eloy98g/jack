@@ -31,14 +31,14 @@ class _HomeState extends State<Home> {
         ),
         onTap: () => setState(() => _selectedIndex = index),
       ),
-      decoration: BoxDecoration(
+      decoration:  _selectedIndex == index ? BoxDecoration(
         border: Border(
-          bottom: BorderSide(
+          bottom:  BorderSide(
             color: textPrimaryColor,
-            width: _selectedIndex == index ? 2.0 : 0,
-          ),
+            width: 2.0
+          )
         )
-      )
+      ) : BoxDecoration() 
     );
   }
 
@@ -58,25 +58,6 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
-    
-      // body: _widgetOptions.elementAt(_selectedIndex),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   type: BottomNavigationBarType.fixed,
-      //   backgroundColor: backgroundPrimaryColor,
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home_outlined),
-      //       label: 'Partidas',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.place_outlined),
-      //       label: 'Juegos',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Colors.white,
-      //   onTap: (index) => setState(() => _selectedIndex = index),
-      // ),
     );
   }
 }
