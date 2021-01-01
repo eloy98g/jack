@@ -18,9 +18,8 @@ class Matches extends StatelessWidget {
                 )
               : SingleChildScrollView(
                   child: Wrap(
-                    alignment: WrapAlignment.start,
+                    alignment: WrapAlignment.spaceAround,
                     runSpacing: 15,
-                    spacing: 8,
                     children: [
                       for (final match in repository.matches)
                         MatchCard(match),
