@@ -17,28 +17,27 @@ class _HomeState extends State<Home> {
   ];
 
   Widget appBarButton(String title, int index){
-    return Container(
-      width: MediaQuery.of(context).size.width / 2,
-      alignment: Alignment.center,
-      child: InkWell(
-        child: Container(
-          child: Text(
-            title,
-            style: TextStyle(
+    return InkWell(
+      excludeFromSemantics: true,
+      child: Container(
+        decoration:  _selectedIndex == index ? BoxDecoration(
+          border: Border(
+            bottom:  BorderSide(
               color: textPrimaryColor,
-            ) 
-          ),
-        ),
-        onTap: () => setState(() => _selectedIndex = index),
-      ),
-      decoration:  _selectedIndex == index ? BoxDecoration(
-        border: Border(
-          bottom:  BorderSide(
-            color: textPrimaryColor,
-            width: 2.0
+              width: 2.0
+            )
           )
-        )
-      ) : BoxDecoration() 
+        ) : BoxDecoration(), 
+        width: MediaQuery.of(context).size.width / 2,
+        alignment: Alignment.center,
+        child: Text(
+          title,
+          style: TextStyle(
+            color: textPrimaryColor,
+          ) 
+        ),
+      ),
+      onTap: () => setState(() => _selectedIndex = index),
     );
   }
 
