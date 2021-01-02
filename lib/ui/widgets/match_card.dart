@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jack/ui/widgets/index.dart';
 import 'package:jack/utils/index.dart';
 
 import '../../models/index.dart';
@@ -14,14 +15,9 @@ class MatchCard extends StatelessWidget {
     return Container(
       width: 300,
       height: 180,
-      child: Card(
-        color: backgroundPrimaryColor,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 27.5, vertical: 18.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 27.5, vertical: 18.0),
+        child: Container(
           child: Column(
             children: [
               Row(
@@ -45,12 +41,48 @@ class MatchCard extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 14.0,
+                    color: textPrimaryColor,
+                  )
                 ],
               ),
               Row(
+                children: [
+                  Container(
+                    height: 10,
+                    width: 23,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color:  Color(data.color),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Separator(),
+                  Text(
+                    'Canasta',
+                    style: TextStyle(
+                      color: textPrimaryColor,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Separator(),
+                  Text(
+                    '(12-12-20)',
+                    style: TextStyle(
+                      color: textPrimaryColor,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
 
-              )
             ],
+          ),
+          decoration: BoxDecoration( //wip
+            border: Border.all(color: Colors.red),
           ),
         ),
       ),
@@ -62,7 +94,7 @@ class MatchCard extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
             spreadRadius: 0,
             blurRadius: 4,
-            offset: Offset(2, 4), // changes position of shadow
+            offset: Offset(2, 4),
           ),
         ],
       ),

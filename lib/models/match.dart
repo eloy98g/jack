@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 class Match {
   final String id, gameId, lastRoundDate, name;
   final List<String> players;
+  final int color;
 
   const Match({
     this.id,
     this.name,
     this.gameId,
     this.lastRoundDate,
-    this.players
+    this.players,
+    this.color
   });
 
   factory Match.fromDocument(DocumentSnapshot document) {
@@ -20,6 +22,7 @@ class Match {
       gameId: document['game_id'],
       lastRoundDate: document['last_round_date'],
       players: document['players']?.cast<String>(),
+      color: document['color'],
     );
   }
 }
