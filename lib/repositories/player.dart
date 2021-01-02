@@ -3,9 +3,14 @@ import '../services/index.dart';
 import 'index.dart';
 
 class PlayerRepository extends BaseRepository<PlayerService> {
-  Player player;
+  final List<Match> matches;
 
-  PlayerRepository(PlayerService service) : super(service: service);
+  Player player;
+  List<Player> players;
+  
+
+  PlayerRepository(PlayerService service, {this.matches})
+      : super(service: service);
 
   @override
   Future<void> loadData() async {}
@@ -15,7 +20,6 @@ class PlayerRepository extends BaseRepository<PlayerService> {
       final response = await service.getPlayer();
       if (response.documents.isNotEmpty) {
         player = Player.fromDocument(response.documents.first);
-
         finishLoading();
         return true;
       }
@@ -29,4 +33,5 @@ class PlayerRepository extends BaseRepository<PlayerService> {
   }
 
   String get id => player.id;
+  
 }

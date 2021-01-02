@@ -9,5 +9,12 @@ class PlayerService extends BaseService {
         .where('name', isEqualTo: 'Sergi')
         .getDocuments();
   }
+
+  Future<QuerySnapshot> getPlayersByMatchId(String matchId) async {
+    return Firestore.instance
+        .collection('players')
+        .where('match_ids', arrayContains: matchId)
+        .getDocuments();
+  }
 }
 

@@ -1,14 +1,37 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:jack/repositories/index.dart';
 import 'package:jack/ui/widgets/index.dart';
 import 'package:jack/utils/index.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/index.dart';
 
+//wip
+const urlPic = 'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg';
 
 class MatchCard extends StatelessWidget {
   final Match data;
 
   const MatchCard(this.data, {Key key}) : super(key: key);
+
+  Widget profilePic(String url){
+    return Container(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25.0),
+        child: CachedNetworkImage(
+          imageUrl: url,
+          height: 25,
+          width: 25,
+          fit: BoxFit.cover,
+        ),
+      ),
+      decoration: BoxDecoration( //wip
+        border: Border.all(width: 1, color: Colors.black),
+        borderRadius: BorderRadius.circular(25.0),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,18 +82,18 @@ class MatchCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  Separator(),
+                  Separator(width: 5, height: 1),
                   Text(
-                    'Canasta',
+                    'Canasta', //wip
                     style: TextStyle(
                       color: textPrimaryColor,
                       fontSize: 10,
                       fontWeight: FontWeight.bold
                     ),
                   ),
-                  Separator(),
+                  Separator(width: 5, height: 1),
                   Text(
-                    '(12-12-20)',
+                    '(12-12-20)',//wip
                     style: TextStyle(
                       color: textPrimaryColor,
                       fontSize: 10,
@@ -78,11 +101,82 @@ class MatchCard extends StatelessWidget {
                   ),
                 ],
               ),
-
+              Separator(width: 1, height: 12),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Wrap(
+                            spacing: 5,
+                            runSpacing: 5,
+                            alignment: WrapAlignment.start,
+                            children: [
+                              // Consumer<MatchesRepository>(
+                              //   builder: (context, repository, child) {
+                              //     for (final player in repository.getPlayersByMatchId(data.id))
+                              //       profilePic(player.)
+                              //   }
+                              // )
+                              profilePic(urlPic),
+                              profilePic(urlPic),
+                              profilePic(urlPic),
+                            ],
+                          ),
+                        ],
+                      )
+                    ),
+                    Expanded( //wip
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '1º Emma',
+                            style: TextStyle(
+                              color: textPrimaryColor,
+                              fontSize: 9,
+                            ),
+                          ),
+                          Text(
+                            '2º Eloy',
+                            style: TextStyle(
+                              color: textPrimaryColor,
+                              fontSize: 9,
+                            ),
+                          ),
+                        ],
+                      )
+                    ),
+                    Expanded( //wip
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '(1200)',
+                            style: TextStyle(
+                              color: textPrimaryColor,
+                              fontSize: 9,
+                            ),
+                          ),
+                          Text(
+                            '(300)',
+                            style: TextStyle(
+                              color: textPrimaryColor,
+                              fontSize: 9,
+                            ),
+                          ),
+                        ],
+                      )
+                    ),
+                  ],
+                )
+              )
             ],
-          ),
-          decoration: BoxDecoration( //wip
-            border: Border.all(color: Colors.red),
           ),
         ),
       ),
