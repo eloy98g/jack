@@ -115,12 +115,6 @@ class MatchCard extends StatelessWidget {
                             runSpacing: 5,
                             alignment: WrapAlignment.start,
                             children: [
-                              // Consumer<MatchesRepository>(
-                              //   builder: (context, repository, child) {
-                              //     for (final player in repository.getPlayersByMatchId(data.id))
-                              //       profilePic(player.)
-                              //   }
-                              // )
                               profilePic(urlPic),
                               profilePic(urlPic),
                               profilePic(urlPic),
