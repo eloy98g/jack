@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
           title,
           style: TextStyle(
             color: textPrimaryColor,
+            fontWeight: FontWeight.bold
           ) 
         ),
       ),

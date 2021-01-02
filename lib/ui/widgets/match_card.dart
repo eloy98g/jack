@@ -31,14 +31,17 @@ class MatchCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          data.name,
-                          style: TextStyle(
-                            color: textPrimaryColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Stack(
+                          children: [
+                            Text(
+                              data.name,
+                              style: TextStyle(
+                                color: textPrimaryColor,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),

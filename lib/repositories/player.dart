@@ -27,4 +27,6 @@ class PlayerRepository extends BaseRepository<PlayerService> {
       return false;
     }
   }
+
+  String get id => player.id;
 }
