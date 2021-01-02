@@ -16,15 +16,22 @@ class Matches extends StatelessWidget {
               ? Center(
                   child: CircularProgressIndicator(),
                 )
-              : SingleChildScrollView(
-                  child: Wrap(
-                    alignment: WrapAlignment.spaceAround,
-                    runSpacing: 15,
-                    children: [
-                      for (final match in repository.matches)
-                        MatchCard(match),
-                    ],
-                  ),
+              : ListView(
+                  children: [
+                    Column(
+                      children: [
+                        for (final match in repository.matches)
+                          Column(
+                            children: [
+                              Divider(
+                                color: Color(0x00000000)
+                              ),
+                              MatchCard(match),
+                            ],
+                          )
+                      ],
+                    )
+                  ],
               ),
           ),
     );
