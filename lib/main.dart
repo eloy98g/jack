@@ -34,6 +34,9 @@ class JackApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Jack',
         home: Home(),
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+        ),
       ),
     );
   }
