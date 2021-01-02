@@ -51,6 +51,18 @@ class MatchCard extends StatelessWidget {
           ),
         ),
       ),
+      decoration: BoxDecoration(
+        color: backgroundPrimaryColor,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            spreadRadius: 0,
+            blurRadius: 4,
+            offset: Offset(2, 4), // changes position of shadow
+          ),
+        ],
+      ),
     );
   }
 }

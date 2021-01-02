@@ -24,11 +24,18 @@ class Matches extends StatelessWidget {
                           Column(
                             children: [
                               Divider(
-                                color: Color(0x00000000)
+                                color: Color(0x00000000),
+                                height: 25,
+                                thickness: 0,
                               ),
                               MatchCard(match),
                             ],
-                          )
+                          ),
+                        Divider(
+                                color: Color(0x00000000),
+                                height: 25,
+                                thickness: 0,
+                              ),
                       ],
                     )
                   ],
