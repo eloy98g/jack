@@ -29,7 +29,7 @@ class PlayerRepository extends BaseRepository<PlayerService> {
 
   List<Player> get players => _players;
 
-  List<Player> getPlayerByMatchId(String matchId){
+  List<Player> getPlayersByMatchId(String matchId){
     try {
       return players.where((player) => player.matchIds.contains(matchId)).toList();
     } catch (_) {

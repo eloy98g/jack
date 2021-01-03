@@ -19,6 +19,8 @@ class _HomeState extends State<Home> {
   Widget appBarButton(String title, int index){
     return InkWell(
       excludeFromSemantics: true,
+      radius: 0,
+      highlightColor: Color(0x00000000),
       child: Container(
         decoration:  _selectedIndex == index ? BoxDecoration(
           border: Border(
