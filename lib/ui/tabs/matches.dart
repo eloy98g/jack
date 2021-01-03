@@ -10,37 +10,37 @@ class Matches extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MatchesRepository>(
       builder: (context, repository, child) =>
-          AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle.dark,
-            child: repository.isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : ListView(
+      AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark,
+        child: repository.isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView(
+              children: [
+                Column(
                   children: [
-                    Column(
-                      children: [
-                        for (final match in repository.matches)
-                          Column(
-                            children: [
-                              Divider(
-                                color: Color(0x00000000),
-                                height: 25,
-                                thickness: 0,
-                              ),
-                              MatchCard(match),
-                            ],
+                    for (final match in repository.matches)
+                      Column(
+                        children: [
+                          Divider(
+                            color: Color(0x00000000),
+                            height: 25,
+                            thickness: 0,
                           ),
-                        Divider(
-                                color: Color(0x00000000),
-                                height: 25,
-                                thickness: 0,
-                              ),
-                      ],
-                    )
+                          MatchCard(match),
+                        ],
+                      ),
+                    Divider(
+                            color: Color(0x00000000),
+                            height: 25,
+                            thickness: 0,
+                          ),
                   ],
-              ),
+                )
+              ],
           ),
+      ),
     );
   }
 }

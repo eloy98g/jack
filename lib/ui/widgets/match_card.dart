@@ -7,9 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../models/index.dart';
 
-//wip
-const urlPic = 'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg';
-
 class MatchCard extends StatelessWidget {
   final Match data;
 
@@ -20,13 +17,13 @@ class MatchCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25.0),
         child: CachedNetworkImage(
-          imageUrl: url,
+          imageUrl: url ?? 'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg',
           height: 25,
           width: 25,
           fit: BoxFit.cover,
         ),
       ),
-      decoration: BoxDecoration( //wip
+      decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.black),
         borderRadius: BorderRadius.circular(25.0),
       ),
@@ -105,24 +102,28 @@ class MatchCard extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Wrap(
-                            spacing: 5,
-                            runSpacing: 5,
-                            alignment: WrapAlignment.start,
+                    Consumer<PlayerRepository>(
+                      builder: (context, repository, child) {
+                        return Expanded(
+                          flex: 2,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              profilePic(urlPic),
-                              profilePic(urlPic),
-                              profilePic(urlPic),
+                              Wrap(
+                                spacing: 5,
+                                runSpacing: 5,
+                                alignment: WrapAlignment.start,
+                                children: [
+                                  for (final player in repository.getPlayersByMatchId(data.id))
+                                    profilePic(player.photoUrl)
+                                ],
+                              ),
                             ],
-                          ),
-                        ],
-                      )
+                          )
+                        );
+                      }
                     ),
+                    
                     Expanded( //wip
                       flex: 2,
                       child: Column(
