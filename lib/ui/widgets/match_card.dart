@@ -81,7 +81,7 @@ class MatchCard extends StatelessWidget {
                   ),
                   Separator(width: 5, height: 1),
                   Text(
-                    'Canasta', //wip
+                    data.game,
                     style: TextStyle(
                       color: textPrimaryColor,
                       fontSize: 10,
@@ -90,7 +90,7 @@ class MatchCard extends StatelessWidget {
                   ),
                   Separator(width: 5, height: 1),
                   Text(
-                    '(12-12-20)',//wip
+                    data.lastRoundDate,
                     style: TextStyle(
                       color: textPrimaryColor,
                       fontSize: 10,
@@ -123,28 +123,9 @@ class MatchCard extends StatelessWidget {
                         );
                       }
                     ),
-                    
                     Expanded( //wip
                       flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '1º Emma',
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 9,
-                            ),
-                          ),
-                          Text(
-                            '2º Eloy',
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 9,
-                            ),
-                          ),
-                        ],
-                      )
+                      child: ScoreTab(data),
                     ),
                     Expanded( //wip
                       flex: 2,

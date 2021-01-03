@@ -16,7 +16,7 @@ import '../widgets/index.dart';
 class Games extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerRepository>(
+    return Consumer<RoundsRepository>(
       builder: (context, repository, child) =>
       AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
@@ -28,13 +28,13 @@ class Games extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    for (final player in repository.getPlayersByMatchId('G4QLlGk4uo08f5qdwsHI'))
+                    Text('estoy eh'),
+                    for (final round in repository.getRoundsByMatchId('G4QLlGk4uo08f5qdwsHI'))
                       Column(
                         children: [
                           Text('---------DEBUGGING---------'),
-                          Text(player.name),
-                          Text(player.token),
-                          Text(player.photoUrl),
+                          Text(round.date),
+                          Text(round.players.length.toString())
                         ],
                       ),
                       Separator(width: 1,height: 10,)

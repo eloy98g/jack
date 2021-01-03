@@ -30,6 +30,13 @@ class JackApp extends StatelessWidget {
             playerId: 'N29fVAdKpBtcnOoEGZZW'/*repository.player.id*/,
           ),
         ),
+        ChangeNotifierProxyProvider(
+          create: (_) => null,
+          update: (_, MatchesRepository repository, __) => RoundsRepository(
+            RoundsService(),
+            matches: repository.matches,
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Jack',
