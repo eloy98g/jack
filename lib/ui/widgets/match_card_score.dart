@@ -6,11 +6,6 @@ import 'package:provider/provider.dart';
 
 import '../../models/index.dart';
 
-class PlayerScore {
-  String name;
-  int score;
-}
-
 class ScoreTab extends StatelessWidget {
   final Match data;
 

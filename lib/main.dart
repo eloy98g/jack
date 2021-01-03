@@ -34,7 +34,7 @@ class JackApp extends StatelessWidget {
           create: (_) => null,
           update: (_, MatchesRepository repository, __) => RoundsRepository(
             RoundsService(),
-            matches: repository.matches,
+            matchId: 'fH6b2UrkhQtAmn6mYHP7',
           ),
         ),
       ],
