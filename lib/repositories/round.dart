@@ -1,6 +1,12 @@
 import '../models/index.dart';
 import '../services/index.dart';
 import 'index.dart';
+import './player.dart';
+
+class PlayerScore {
+  String name;
+  int score;
+}
 
 class RoundsRepository extends BaseRepository<RoundsService> {
   final String matchId;
@@ -29,9 +35,6 @@ class RoundsRepository extends BaseRepository<RoundsService> {
   List<Round> get rounds => _rounds;
 
   List<Round> getRoundsByMatchId(String matchId){
-    List<Round> aux = _rounds.where((round) => round.matchId == matchId).toList();
-    print('AAAAAAAAAUUUUUUUUUUAAAAAAAAAAAAAAAAA');
-    print(aux.length);
-    return aux;
+    return _rounds.where((round) => round.matchId == matchId).toList();
   }
 }

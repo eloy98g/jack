@@ -36,4 +36,12 @@ class PlayerRepository extends BaseRepository<PlayerService> {
       return null;
     }
   }
+
+  Player getPlayerById(String playerId){
+    try{
+      return players.where((player) => player.id == playerId).single;
+    } catch(_){
+      return null;
+    }
+  }
 }

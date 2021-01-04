@@ -124,31 +124,31 @@ class MatchCard extends StatelessWidget {
                       }
                     ),
                     Expanded( //wip
-                      flex: 2,
+                      flex: 4,
                       child: ScoreTab(data),
                     ),
-                    Expanded( //wip
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '(1200)',
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 9,
-                            ),
-                          ),
-                          Text(
-                            '(300)',
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 9,
-                            ),
-                          ),
-                        ],
-                      )
-                    ),
+                    // Expanded( //wip
+                    //   flex: 2,
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Text(
+                    //         '(1200)',
+                    //         style: TextStyle(
+                    //           color: textPrimaryColor,
+                    //           fontSize: 9,
+                    //         ),
+                    //       ),
+                    //       Text(
+                    //         '(300)',
+                    //         style: TextStyle(
+                    //           color: textPrimaryColor,
+                    //           fontSize: 9,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   )
+                    // ),
                   ],
                 )
               )
