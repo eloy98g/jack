@@ -17,40 +17,38 @@ class ScoreTab extends StatelessWidget {
     PlayerScore aux = new PlayerScore();
     List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(matchId);
 
-    for(int i = 0; i<rounds.length; i++){
+    //for(int i = 0; i<rounds.length; i++){
+      int i = 0;
       for(int j = 0; j<rounds[i].players.length; j++){
         aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name;
         aux.score = rounds[i].results[j];
-        print('--------------------------------');
-        print(aux.name);
-        print(aux.score.toString());
         scoreList.add(aux);
       }
-    }
-    print('(${scoreList.length})');
+      print('--------------------------------');
+      for(final score in scoreList)
+       print(score.name);
+    //}
     return scoreList;
   }
 
   @override
   Widget build(BuildContext context) {
-    List <PlayerScore> playerScore = setPlayerScores(context, data.id);
-
+    // List <PlayerScore> playerScore = setPlayerScores(context, data.id);
+    // print('IMPRIMIENDO: ${playerScore.length}');
+    // for(final score in playerScore)
+    //   print(score.name);
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for(final score in playerScore)
-            Column(
-              children: [
-                Text(
-                  '${score.name}  (${score.score.toString()})',
-                  style: TextStyle(
-                    color: textPrimaryColor,
-                    fontSize: 9,
-                  ),
-                ),
-              ],
-            )
+          for(final score in setPlayerScores(context, data.id))
+            Text(
+              '${score.name}  (${score.score.toString()})',
+              style: TextStyle(
+                color: textPrimaryColor,
+                fontSize: 9,
+              ),
+            ),
         ],
       )
     );
