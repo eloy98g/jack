@@ -33,7 +33,7 @@ class MatchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: 250,
       height: 180,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 27.5, vertical: 18.0),
@@ -124,31 +124,13 @@ class MatchCard extends StatelessWidget {
                       }
                     ),
                     Expanded( //wip
-                      flex: 4,
+                      flex: 2,
                       child: ScoreTab(data),
                     ),
-                    // Expanded( //wip
-                    //   flex: 2,
-                    //   child: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                    //     children: [
-                    //       Text(
-                    //         '(1200)',
-                    //         style: TextStyle(
-                    //           color: textPrimaryColor,
-                    //           fontSize: 9,
-                    //         ),
-                    //       ),
-                    //       Text(
-                    //         '(300)',
-                    //         style: TextStyle(
-                    //           color: textPrimaryColor,
-                    //           fontSize: 9,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   )
-                    // ),
+                    Expanded( //wip
+                      flex: 1,
+                      child: Separator(width: 1, height: 1)
+                    ),
                   ],
                 )
               )

@@ -14,41 +14,61 @@ class ScoreTab extends StatelessWidget {
 
   List<PlayerScore> setPlayerScores(BuildContext context, String matchId){
     List <PlayerScore> scoreList = [];
-    PlayerScore aux = new PlayerScore();
+    
     List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(matchId);
 
-    //for(int i = 0; i<rounds.length; i++){
-      int i = 0;
+    for(int i = 0; i<rounds.length; i++){
       for(int j = 0; j<rounds[i].players.length; j++){
-        aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name;
-        aux.score = rounds[i].results[j];
-        scoreList.add(aux);
+        PlayerScore aux = new PlayerScore();
+        if(i == 0){
+          aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name; 
+          aux.score = rounds[i].results[j];
+          scoreList.add(aux);
+        }else{
+          scoreList[j].score += rounds[i].results[j];
+        }
+          // aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name; 
+          // aux.score = rounds[i].results[j];
+          // scoreList.add(aux);
       }
-      print('--------------------------------');
-      for(final score in scoreList)
-       print(score.name);
-    //}
+    }
     return scoreList;
   }
 
   @override
   Widget build(BuildContext context) {
-    // List <PlayerScore> playerScore = setPlayerScores(context, data.id);
-    // print('IMPRIMIENDO: ${playerScore.length}');
-    // for(final score in playerScore)
-    //   print(score.name);
+    List<PlayerScore> scores  = setPlayerScores(context, data.id);
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for(final score in setPlayerScores(context, data.id))
-            Text(
-              '${score.name}  (${score.score.toString()})',
-              style: TextStyle(
-                color: textPrimaryColor,
-                fontSize: 9,
-              ),
+          Expanded(
+            child: Column(
+              children: [
+                for(final score in scores)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '${score.name}',
+                        style: TextStyle(
+                          color: textPrimaryColor,
+                          fontSize: 9,
+                        ),
+                      ),
+                      Text(
+                        '(${score.score.toString()})',
+                        style: TextStyle(
+                          color: textPrimaryColor,
+                          fontSize: 9,
+                        ),
+                      )
+                    ],
+                  )
+              ],
             ),
+          )
+          
         ],
       )
     );
