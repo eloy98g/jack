@@ -27,11 +27,10 @@ class ScoreTab extends StatelessWidget {
         }else{
           scoreList[j].score += rounds[i].results[j];
         }
-          // aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name; 
-          // aux.score = rounds[i].results[j];
-          // scoreList.add(aux);
       }
     }
+    Comparator<PlayerScore> scoreComparator = (a, b) => b.score.compareTo(a.score);
+    scoreList.sort(scoreComparator);
     return scoreList;
   }
 
@@ -53,14 +52,14 @@ class ScoreTab extends StatelessWidget {
                         '${score.name}',
                         style: TextStyle(
                           color: textPrimaryColor,
-                          fontSize: 9,
+                          fontSize: 12,
                         ),
                       ),
                       Text(
                         '(${score.score.toString()})',
                         style: TextStyle(
                           color: textPrimaryColor,
-                          fontSize: 9,
+                          fontSize: 12,
                         ),
                       )
                     ],

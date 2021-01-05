@@ -18,8 +18,8 @@ class MatchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(25.0),
         child: CachedNetworkImage(
           imageUrl: url ?? 'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg',
-          height: 25,
-          width: 25,
+          height: 33,
+          width: 33,
           fit: BoxFit.cover,
         ),
       ),
@@ -33,10 +33,10 @@ class MatchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
+      width: 300,
       height: 180,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27.5, vertical: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 27.5, vertical: 15.0),
         child: Container(
           child: Column(
             children: [
@@ -53,7 +53,7 @@ class MatchCard extends StatelessWidget {
                               data.name,
                               style: TextStyle(
                                 color: textPrimaryColor,
-                                fontSize: 14,
+                                fontSize: 16,
                               ),
                             ),
                           ],
@@ -63,7 +63,7 @@ class MatchCard extends StatelessWidget {
                   ),
                   Icon(
                     Icons.arrow_forward_rounded,
-                    size: 14.0,
+                    size: 16.0,
                     color: textPrimaryColor,
                   )
                 ],
@@ -84,7 +84,7 @@ class MatchCard extends StatelessWidget {
                     data.game,
                     style: TextStyle(
                       color: textPrimaryColor,
-                      fontSize: 10,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold
                     ),
                   ),
@@ -93,7 +93,7 @@ class MatchCard extends StatelessWidget {
                     data.lastRoundDate,
                     style: TextStyle(
                       color: textPrimaryColor,
-                      fontSize: 10,
+                      fontSize: 12,
                     ),
                   ),
                 ],
@@ -101,6 +101,7 @@ class MatchCard extends StatelessWidget {
               Separator(width: 1, height: 12),
               Expanded(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Consumer<PlayerRepository>(
                       builder: (context, repository, child) {
@@ -123,13 +124,10 @@ class MatchCard extends StatelessWidget {
                         );
                       }
                     ),
+                    Separator(width: 12,height: 1),
                     Expanded( //wip
                       flex: 2,
                       child: ScoreTab(data),
-                    ),
-                    Expanded( //wip
-                      flex: 1,
-                      child: Separator(width: 1, height: 1)
                     ),
                   ],
                 )
