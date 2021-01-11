@@ -37,4 +37,24 @@ class RoundsRepository extends BaseRepository<RoundsService> {
   List<Round> getRoundsByMatchId(String matchId){
     return _rounds.where((round) => round.matchId == matchId).toList();
   }
+
+  Future<void> appendRound({
+    String id,
+    String date,
+    String matchId,
+    String index,
+    List<String> players,
+    List<String> results
+  }) {
+    return service
+        .appendRound(
+          id: id,
+          date: date,
+          matchId: matchId,
+          index: index,
+          players: players,
+          results: results,
+        )
+        .then((value) async => await loadData());
+  }
 }

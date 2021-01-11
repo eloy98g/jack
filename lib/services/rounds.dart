@@ -8,4 +8,33 @@ class RoundsService extends BaseService {
         .collection('rounds')
         .getDocuments();
   }
+
+  Future appendRound({
+    String id,
+    String date,
+    String matchId,
+    String index,
+    List<String> players,
+    List<String> results
+  }) async {
+    if (id != null)
+      return Firestore.instance
+          .collection('rounds')
+          .document(id)
+          .updateData({
+        'date': date,
+        'match_id': matchId,
+        'index': int.parse(index),
+        'players': players,
+        'results': results,
+      });
+    else
+      return Firestore.instance.collection('rounds').add({
+        'date': date,
+        'match_id': matchId,
+        'index': int.parse(index),
+        'players': players,
+        'results': results,
+      });
+  }
 }
