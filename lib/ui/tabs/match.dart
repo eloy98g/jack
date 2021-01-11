@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import '../../utils/index.dart';
+import '../../models/index.dart';
 
-class Match extends StatelessWidget {
+class MatchDetails extends StatelessWidget {
+  final Match matchData;
+
+  const MatchDetails({Key key, this.matchData}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Text('match page WIP');
+    return Scaffold(
+      backgroundColor: backgroundSecondaryColor,
+      appBar: AppBar(
+        backgroundColor: backgroundPrimaryColor,
+        title: Text(matchData.name),
+      ),
+    );
   }
 }
 
