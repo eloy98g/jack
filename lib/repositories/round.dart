@@ -38,6 +38,14 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     return _rounds.where((round) => round.matchId == matchId).toList();
   }
 
+  Round getRound(String id) {
+    try {
+      return rounds.where((round) => round.id == id).single;
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<void> appendRound({
     String id,
     String date,
