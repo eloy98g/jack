@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jack/utils/index.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_input/flutter_input.dart';
 
 import '../../repositories/index.dart';
 import '../widgets/index.dart';
@@ -22,60 +24,72 @@ class _RoundEditTab extends State<RoundEditTab> {
   Widget build(BuildContext context) {
     return Consumer<RoundsRepository>
       (builder: (context, repository, child) {
-        final List<String> players = widget.data.players;
-        final rounds = repository.getRoundsByMatchId(widget.data.id);
-        List<int> results;
+        List<String> players = context.watch<PlayerRepository>().getPlayerNames(widget.data.players);
+        List<int> newResults = List();
         String aux;
-
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
-            ),
-          ),
-          title: Text('Nueva Ronda'),
-          content: Builder(
-            builder: (_) {
-              return Form(
-                  key: _formKey,
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          for (final player in players)
-                            Row(
-                              children: [
-                                Text(context.watch<PlayerRepository>().getPlayerById(player).name),
-                                Separator(width: 8, height: 1)
-                              ],
-                            ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          for (final player in players)
-                            Row(
-                              children: [
-                                TextBoxCell(
-                                  textInputType: TextInputType.number,
-                                  validator: (string) =>
-                                      int.tryParse(string) != null
-                                          ? null
-                                          : 'Escribe un número entero',
-                                  onSaved: (string) =>
-                                      setState(() => aux = string),
-                                )
-                              ],
-                            )
-                        ],
-                      )
-                    ],
+        final scoreRow = <Widget>[];
+        final index = widget.data.players.length;
+        for(var i = 0; i < index ; i++){
+          scoreRow.add(
+            new Row(
+              children: [
+                Text(players[i]),
+                Separator(width: 8, height: 1),
+                Container(
+                  width: 100,
+                  height: 50,
+                  child: Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (text) {
+                       setState(() {
+                          aux = text;
+                        });
+                      },
+                    )
                   ),
-              );
-            },
-          ),
-        );
+                )
+              ],
+            )
+          );
+        }
+        return AlertDialog(
+          title: Text('Ronda ${index + 1}'),
+          content: Column(children: scoreRow),
+          actions: [
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );      
+        // return Container(
+        //   width: 300,
+        //   height: 500,
+        //   child: AlertDialog(
+            
+        //     backgroundColor: backgroundSecondaryColor,
+        //     content: Builder(
+        //       builder: (_) {
+        //         return Form(
+        //             key: _formKey,
+        //             child: Row(
+        //               children: [
+        //                 Column(
+        //                   children: scoreRow,
+        //                 )
+        //               ],
+        //             ),
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // );
       }
     );
   }
 }
+
+

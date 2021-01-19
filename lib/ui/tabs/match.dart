@@ -21,8 +21,9 @@ class _MatchDetails extends State<MatchDetails> {
   Widget build(BuildContext context) {
     return Consumer<RoundsRepository>(
       builder: (context, repository, child) {
-        //final List<PlayerScore> scores  = setPlayerScores(context, widget.matchData.id);
-
+        List<String> players = context.watch<PlayerRepository>().getPlayerNames(widget.matchData.players);
+        List<Round> roundList = repository.getRoundsByMatchId(widget.matchData.id);
+        List<int> results = repository.getTotalResult(roundList);
         return Scaffold(
           backgroundColor: backgroundSecondaryColor,
           appBar: AppBar(
@@ -36,31 +37,38 @@ class _MatchDetails extends State<MatchDetails> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text('ola'),
-                      // for(final score in scores)
-                      //   Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Text(
-                      //         '${score.name}',
-                      //         style: TextStyle(
-                      //           color: textPrimaryColor,
-                      //           fontSize: 12,
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         '(${score.score.toString()})',
-                      //         style: TextStyle(
-                      //           color: textPrimaryColor,
-                      //           fontSize: 12,
-                      //         ),
-                      //       )
-                      //     ],
-                      //   )
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              for (final player in players)
+                                Text(
+                                  player,
+                                  style: TextStyle(
+                                    color: textPrimaryColor,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              for(final result in results)
+                                Text(
+                                  result.toString(),
+                                  style: TextStyle(
+                                    color: textPrimaryColor,
+                                    fontSize: 12,
+                                  ),
+                                )
+                            ],
+                          )
+                        ],
+                      )
                     ],
                   ),
                 )
-                
               ],
             )
           ),

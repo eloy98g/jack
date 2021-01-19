@@ -7,28 +7,6 @@ import 'package:provider/provider.dart';
 import '../../models/index.dart';
 import '../../repositories/index.dart';
 
-// List<PlayerScore> setPlayerScores(BuildContext context, String matchId){
-//   List <PlayerScore> scoreList = [];
-  
-//   List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(matchId);
-
-
-//   // for(int i = 0; i<rounds.length; i++){
-//   //   for(int j = 0; j<rounds[i].players.length; j++){
-//   //     PlayerScore aux = new PlayerScore();
-//   //     if(i == 0){
-//   //       aux.name = context.watch<PlayerRepository>().getPlayerById(rounds[i].players[j]).name; 
-//   //       aux.score = rounds[i].results[j];
-//   //       scoreList.add(aux);
-//   //     }else{
-//   //       scoreList[j].score += rounds[i].results[j];
-//   //     }
-//   //   }
-//   // }
-//   // Comparator<PlayerScore> scoreComparator = (a, b) => b.score.compareTo(a.score);
-//   // scoreList.sort(scoreComparator);
-//   // return scoreList;
-// }
 
 class ScoreTab extends StatelessWidget {
   final Match data;
