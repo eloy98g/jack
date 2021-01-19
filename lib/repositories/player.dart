@@ -37,6 +37,14 @@ class PlayerRepository extends BaseRepository<PlayerService> {
     }
   }
 
+  List<String> getPlayerNames(List<String> playerIds){
+    List<String> playerNames = List();
+    for(final id in playerIds){
+      playerNames.add(getPlayerById(id).name);
+    }
+    return playerNames;
+  }
+
   Player getPlayerById(String playerId){
     try{
       return players.where((player) => player.id == playerId).single;

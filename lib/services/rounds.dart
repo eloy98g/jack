@@ -14,7 +14,6 @@ class RoundsService extends BaseService {
     String date,
     String matchId,
     String index,
-    List<String> players,
     List<String> results
   }) async {
     if (id != null)
@@ -25,7 +24,6 @@ class RoundsService extends BaseService {
         'date': date,
         'match_id': matchId,
         'index': int.parse(index),
-        'players': players,
         'results': results,
       });
     else
@@ -33,7 +31,6 @@ class RoundsService extends BaseService {
         'date': date,
         'match_id': matchId,
         'index': int.parse(index),
-        'players': players,
         'results': results,
       });
   }

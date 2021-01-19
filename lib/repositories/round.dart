@@ -46,12 +46,26 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     }
   }
 
+  List<int> getTotalResult(List<Round> roundList){
+    List<int> totalResult = List();
+
+    for(int i = 0; i<roundList[0].results.length; i++){
+      totalResult.add(0);
+    }
+
+    for(int i = 0; i<roundList.length; i++){
+      for(int j = 0; j<roundList[i].results.length; j++){
+        totalResult[j] = totalResult[j] + roundList[i].results[j];  
+      }
+    }
+    return totalResult;
+  }
+
   Future<void> appendRound({
     String id,
     String date,
     String matchId,
     String index,
-    List<String> players,
     List<String> results
   }) {
     return service
@@ -60,7 +74,6 @@ class RoundsRepository extends BaseRepository<RoundsService> {
           date: date,
           matchId: matchId,
           index: index,
-          players: players,
           results: results,
         )
         .then((value) async => await loadData());

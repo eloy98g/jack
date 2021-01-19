@@ -21,7 +21,7 @@ class _MatchDetails extends State<MatchDetails> {
   Widget build(BuildContext context) {
     return Consumer<RoundsRepository>(
       builder: (context, repository, child) {
-        final List<PlayerScore> scores  = setPlayerScores(context, widget.matchData.id);
+        //final List<PlayerScore> scores  = setPlayerScores(context, widget.matchData.id);
 
         return Scaffold(
           backgroundColor: backgroundSecondaryColor,
@@ -36,26 +36,27 @@ class _MatchDetails extends State<MatchDetails> {
                 Expanded(
                   child: Column(
                     children: [
-                      for(final score in scores)
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '${score.name}',
-                              style: TextStyle(
-                                color: textPrimaryColor,
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              '(${score.score.toString()})',
-                              style: TextStyle(
-                                color: textPrimaryColor,
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        )
+                      Text('ola'),
+                      // for(final score in scores)
+                      //   Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       Text(
+                      //         '${score.name}',
+                      //         style: TextStyle(
+                      //           color: textPrimaryColor,
+                      //           fontSize: 12,
+                      //         ),
+                      //       ),
+                      //       Text(
+                      //         '(${score.score.toString()})',
+                      //         style: TextStyle(
+                      //           color: textPrimaryColor,
+                      //           fontSize: 12,
+                      //         ),
+                      //       )
+                      //     ],
+                      //   )
                     ],
                   ),
                 )

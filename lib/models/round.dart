@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class Round {
   final String id, date, matchId;
   final int index;
-  final List<String> players;
   final List<int> results;
 
   const Round({
@@ -14,7 +13,6 @@ class Round {
     this.date,
     this.matchId,
     this.index,
-    this.players,
     this.results
   });
 
@@ -24,7 +22,6 @@ class Round {
       date: document['date'],
       matchId: document['match_id'],
       index: document['index'],
-      players: document['players']?.cast<String>(),
       results: document['results']?.cast<int>()
     );
   }

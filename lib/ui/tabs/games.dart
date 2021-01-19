@@ -34,7 +34,7 @@ class Games extends StatelessWidget {
                         children: [
                           Text('---------DEBUGGING---------'),
                           Text(round.date),
-                          Text(round.players.length.toString())
+                          Text(round.results.length.toString())
                         ],
                       ),
                       Separator(width: 1,height: 10,)
