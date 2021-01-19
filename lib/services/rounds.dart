@@ -13,8 +13,8 @@ class RoundsService extends BaseService {
     String id,
     String date,
     String matchId,
-    String index,
-    List<String> results
+    int index,
+    List<int> results
   }) async {
     if (id != null)
       return Firestore.instance
@@ -23,14 +23,14 @@ class RoundsService extends BaseService {
           .updateData({
         'date': date,
         'match_id': matchId,
-        'index': int.parse(index),
+        'index': index,
         'results': results,
       });
     else
       return Firestore.instance.collection('rounds').add({
         'date': date,
         'match_id': matchId,
-        'index': int.parse(index),
+        'index': index,
         'results': results,
       });
   }

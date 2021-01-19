@@ -58,7 +58,7 @@ class _RoundEditTab extends State<RoundEditTab> {
           content: Column(children: scoreRow),
           actions: [
             FlatButton(
-              child: Text('Ok'),
+              child: Text('Ace'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -69,7 +69,6 @@ class _RoundEditTab extends State<RoundEditTab> {
         //   width: 300,
         //   height: 500,
         //   child: AlertDialog(
-            
         //     backgroundColor: backgroundSecondaryColor,
         //     content: Builder(
         //       builder: (_) {

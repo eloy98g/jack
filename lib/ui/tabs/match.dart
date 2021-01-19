@@ -24,7 +24,46 @@ class _MatchDetails extends State<MatchDetails> {
         List<String> players = context.watch<PlayerRepository>().getPlayerNames(widget.matchData.players);
         List<Round> roundList = repository.getRoundsByMatchId(widget.matchData.id);
         List<int> results = repository.getTotalResult(roundList);
+        
+        String aux;
+        final scoreRow = <Widget>[];
+        final roundsNum = roundList.length;
+        final playerIndex = widget.matchData.players.length;
+        List<int> newResults = List();
+        for(int i = 0; i<roundsNum; i++){
+          newResults.add(0);
+        }
+
+        final id = null;
+
+        for(var i = 0; i < playerIndex ; i++){
+          scoreRow.add(
+            new Row(
+              children: [
+                Text(players[i]),
+                Separator(width: 8, height: 1),
+                Container(
+                  width: 80,
+                  height: 30,
+                  child: Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (text) {
+                       setState(() {
+                          aux = text;
+                          newResults[i] = int.parse(aux);
+                          print(newResults[i]);
+                        });
+                      },
+                    )
+                  ),
+                )
+              ],
+            )
+          );
+        }
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: backgroundSecondaryColor,
           appBar: AppBar(
             backgroundColor: backgroundPrimaryColor,
@@ -65,6 +104,30 @@ class _MatchDetails extends State<MatchDetails> {
                             ],
                           )
                         ],
+                      ),
+                      Text('NUEVA RONDA'),
+                      Text('Ronda: ${roundsNum + 1}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: scoreRow,
+                          )
+                        ],
+                      ),
+                      FlatButton(
+                        child: Text('Aceptar'),
+                        onPressed: () async {
+                           repository
+                            .appendRound(
+                              id: id,
+                              date: '19-1-21',
+                              matchId: widget.matchData.id,
+                              index: (roundsNum +1),
+                              results: newResults,
+                            )
+                            .then((value) => Navigator.of(context).pop());
+                        }
                       )
                     ],
                   ),
@@ -72,30 +135,19 @@ class _MatchDetails extends State<MatchDetails> {
               ],
             )
           ),
-          floatingActionButton: new FloatingActionButton(
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => RoundEditTab(
-                  data: widget.matchData,
-                ),
-              ),
-            ),
-            tooltip: 'Increment',
-            child: new Icon(Icons.add),
-          ),
+          // floatingActionButton: new FloatingActionButton(
+          //   onPressed: () => Navigator.of(context).push(
+          //     MaterialPageRoute(
+          //       builder: (_) => RoundEditTab(
+          //         data: widget.matchData,
+          //       ),
+          //     ),
+          //   ),
+          //   tooltip: 'Increment',
+          //   child: new Icon(Icons.add),
+          // ),
         );
       }
     );
   }
 }
-
-
-// return Scaffold(
-//       backgroundColor: backgroundSecondaryColor,
-//       appBar: AppBar(
-//         backgroundColor: backgroundPrimaryColor,
-//         title: Text(matchData.name),
-//       ),
-//       body: Consumer<RoundsRepository>
-//     );
-

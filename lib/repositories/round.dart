@@ -65,8 +65,8 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     String id,
     String date,
     String matchId,
-    String index,
-    List<String> results
+    int index,
+    List<int> results
   }) {
     return service
         .appendRound(
