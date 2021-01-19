@@ -30,7 +30,7 @@ class _MatchDetails extends State<MatchDetails> {
         final roundsNum = roundList.length;
         final playerIndex = widget.matchData.players.length;
         List<int> newResults = List();
-        for(int i = 0; i<roundsNum; i++){
+        for(int i = 0; i<playerIndex; i++){
           newResults.add(0);
         }
 
@@ -49,7 +49,7 @@ class _MatchDetails extends State<MatchDetails> {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       onChanged: (text) {
-                       setState(() {
+                       setState(() async {
                           aux = text;
                           newResults[i] = int.parse(aux);
                           print(newResults[i]);
