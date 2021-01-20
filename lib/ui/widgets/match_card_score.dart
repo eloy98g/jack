@@ -28,6 +28,7 @@ class ScoreTab extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         for (final player in players)
                           Text(
@@ -36,10 +37,11 @@ class ScoreTab extends StatelessWidget {
                               color: textPrimaryColor,
                               fontSize: 12,
                             ),
-                          ),
+                          )
                       ],
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         for(final result in results)
                           Text(
@@ -56,7 +58,7 @@ class ScoreTab extends StatelessWidget {
               ],
             ),
           )
-        ],
+        ]
       )
     );
   }
