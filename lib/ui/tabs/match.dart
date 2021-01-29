@@ -121,7 +121,7 @@ class _MatchDetails extends State<MatchDetails> {
                            repository
                             .appendRound(
                               id: id,
-                              date: '19-1-21',
+                              date: DateTime.now(),
                               matchId: widget.matchData.id,
                               index: (roundsNum +1),
                               results: newResults,

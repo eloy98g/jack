@@ -11,7 +11,7 @@ class RoundsService extends BaseService {
 
   Future appendRound({
     String id,
-    String date,
+    DateTime date,
     String matchId,
     int index,
     List<int> results

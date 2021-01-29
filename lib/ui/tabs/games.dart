@@ -33,7 +33,7 @@ class Games extends StatelessWidget {
                       Column(
                         children: [
                           Text('---------DEBUGGING---------'),
-                          Text(round.date),
+                          Text(round.date.toString()),
                           Text(round.results.length.toString())
                         ],
                       ),

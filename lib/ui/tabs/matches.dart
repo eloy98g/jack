@@ -32,10 +32,10 @@ class Matches extends StatelessWidget {
                         ],
                       ),
                     Divider(
-                            color: Color(0x00000000),
-                            height: 25,
-                            thickness: 0,
-                          ),
+                      color: Color(0x00000000),
+                      height: 25,
+                      thickness: 0,
+                    ),
                   ],
                 )
               ],

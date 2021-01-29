@@ -63,7 +63,7 @@ class RoundsRepository extends BaseRepository<RoundsService> {
 
   Future<void> appendRound({
     String id,
-    String date,
+    DateTime date,
     String matchId,
     int index,
     List<int> results

@@ -63,8 +63,3 @@ class ScoreTab extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
