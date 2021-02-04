@@ -18,6 +18,8 @@ class ScoreTab extends StatelessWidget {
     List<String> players = context.watch<PlayerRepository>().getPlayerNames(data.players);
     List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(data.id);
     List<PlayerScore> scores = getScore(players, rounds);
+    
+    sortScores(scores);
 
     return Container(
       child: Column(

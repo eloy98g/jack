@@ -135,17 +135,6 @@ class _MatchDetails extends State<MatchDetails> {
               ],
             )
           ),
-          // floatingActionButton: new FloatingActionButton(
-          //   onPressed: () => Navigator.of(context).push(
-          //     MaterialPageRoute(
-          //       builder: (_) => RoundEditTab(
-          //         data: widget.matchData,
-          //       ),
-          //     ),
-          //   ),
-          //   tooltip: 'Increment',
-          //   child: new Icon(Icons.add),
-          // ),
         );
       }
     );
