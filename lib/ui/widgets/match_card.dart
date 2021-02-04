@@ -37,7 +37,7 @@ class MatchCard extends StatelessWidget {
       excludeFromSemantics: true,
       radius: 0,
       highlightColor: Color(0x00000000),
-      child:Container(
+      child: Container(
         width: 300,
         height: 180,
         child: Padding(

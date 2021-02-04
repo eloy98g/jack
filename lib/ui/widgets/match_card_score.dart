@@ -17,9 +17,6 @@ class ScoreTab extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> players = context.watch<PlayerRepository>().getPlayerNames(data.players);
     List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(data.id);
-    List<PlayerScore> scores = getScore(players, rounds);
-    
-    sortScores(scores);
 
     return Container(
       child: Column(
@@ -28,7 +25,7 @@ class ScoreTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (final score in scores)
+                for (final score in getScore(players, rounds))
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

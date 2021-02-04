@@ -22,9 +22,10 @@ List<PlayerScore> getScore(List<String> playerList, List<Round> roundList){
     scoreList.insert(i, score);
   }
 
+  sortScore(scoreList);
   return scoreList;
 }
 
-void sortScores(List<PlayerScore> scoreList){
+void sortScore(List<PlayerScore> scoreList){
   scoreList.sort((a, b) => b.result.compareTo(a.result));
 }

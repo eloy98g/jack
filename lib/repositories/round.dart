@@ -42,21 +42,6 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     }
   }
 
-  List<int> getTotalResult(List<Round> roundList){
-    List<int> totalResult = List();
-
-    for(int i = 0; i<roundList[0].results.length; i++){
-      totalResult.add(0);
-    }
-
-    for(int i = 0; i<roundList.length; i++){
-      for(int j = 0; j<roundList[i].results.length; j++){
-        totalResult[j] = totalResult[j] + roundList[i].results[j];  
-      }
-    }
-    return totalResult;
-  }
-
   void sortRounds(List<Round> roundList){
     roundList.sort((a, b) => a.date.compareTo(b.date));
   }
