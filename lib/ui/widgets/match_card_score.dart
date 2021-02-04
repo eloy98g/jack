@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/index.dart';
 import '../../repositories/index.dart';
+import '../../models/score.dart';
 
 
 class ScoreTab extends StatelessWidget {
@@ -16,49 +17,39 @@ class ScoreTab extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> players = context.watch<PlayerRepository>().getPlayerNames(data.players);
     List<Round> rounds = context.watch<RoundsRepository>().getRoundsByMatchId(data.id);
-    List<int> results = context.watch<RoundsRepository>().getTotalResult(rounds);
+    List<PlayerScore> scores = getScore(players, rounds);
+
     return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (final player in players)
-                          Text(
-                            player,
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 12,
-                            ),
-                          )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        for(final result in results)
-                          Text(
-                            result.toString(),
-                            style: TextStyle(
-                              color: textPrimaryColor,
-                              fontSize: 12,
-                            ),
-                          )
-                      ],
-                    )
-                  ],
-                )
+                for (final score in scores)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        score.name,
+                        style: TextStyle(
+                          color: textPrimaryColor,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Text(
+                        score.result.toString(),
+                        style: TextStyle(
+                          color: textPrimaryColor,
+                          fontSize: 12,
+                        ),
+                      )
+                    ],
+                  ),
               ],
-            ),
-          )
-        ]
+            )
+          ),
+        ],
       )
     );
   }

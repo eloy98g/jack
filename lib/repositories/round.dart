@@ -3,10 +3,6 @@ import '../services/index.dart';
 import 'index.dart';
 import './player.dart';
 
-class PlayerScore {
-  String name;
-  int score;
-}
 
 class RoundsRepository extends BaseRepository<RoundsService> {
   final String matchId;
@@ -59,6 +55,15 @@ class RoundsRepository extends BaseRepository<RoundsService> {
       }
     }
     return totalResult;
+  }
+
+  void sortRounds(List<Round> roundList){
+    roundList.sort((a, b) => a.date.compareTo(b.date));
+  }
+
+  DateTime getLatestDate(List<Round> roundList){
+    sortRounds(roundList);
+    return roundList.last.date;
   }
 
   Future<void> appendRound({
