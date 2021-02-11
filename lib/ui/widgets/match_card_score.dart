@@ -19,6 +19,8 @@ class ScoreTab extends StatelessWidget {
     List<Round> rounds =
         context.watch<RoundsRepository>().getRoundsByMatchId(data.id);
 
+    final scores = getScore(players, rounds);
+
     return Container(
         child: Column(
       children: [
@@ -26,12 +28,12 @@ class ScoreTab extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (final score in getScore(players, rounds))
+            for (final score in scores)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    score.name,
+                    '${((scores.indexOf(score))+1).toString()}º   ${score.name}',
                     style: TextStyle(
                       color: textPrimaryColor,
                       fontSize: 12,

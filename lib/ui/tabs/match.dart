@@ -33,7 +33,6 @@ class _MatchDetails extends State<MatchDetails> {
                 Separator(width: 1, height: 32),
                 Container(
                     width: 300,
-                    height: 180, //delete this
                     decoration: BoxDecoration(
                       color: backgroundPrimaryColor,
                       borderRadius: BorderRadius.circular(20),
@@ -41,6 +40,20 @@ class _MatchDetails extends State<MatchDetails> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 18.0),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              'CLASIFICACIÓN',
+                              style: TextStyle(
+                                color: textPrimaryColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ))
               ],
             )
