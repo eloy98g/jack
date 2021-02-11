@@ -6,8 +6,6 @@ import '../../utils/index.dart';
 import '../../models/index.dart';
 import '../widgets/match_card_score.dart';
 
-
-
 class MatchDetails extends StatefulWidget {
   final Match matchData;
 
@@ -18,43 +16,38 @@ class MatchDetails extends StatefulWidget {
 }
 
 class _MatchDetails extends State<MatchDetails> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundSecondaryColor,
-      appBar: AppBar(
-        backgroundColor: backgroundPrimaryColor,
-        title: Text(widget.matchData.name),
-      ),
-      body:  Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Separator(width: 1, height: 32),
+        backgroundColor: backgroundSecondaryColor,
+        appBar: AppBar(
+          backgroundColor: backgroundPrimaryColor,
+          title: Text(widget.matchData.name),
+        ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Separator(width: 1, height: 32),
                 Container(
-                  width: 300,
-                  height: 180, //delete this
-                  decoration: BoxDecoration(
-                    color: backgroundPrimaryColor,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18.0),
-                  )
-                )
-            ],
-          )
-        ],
-      )
-    );
+                    width: 300,
+                    height: 180, //delete this
+                    decoration: BoxDecoration(
+                      color: backgroundPrimaryColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 18.0),
+                    ))
+              ],
+            )
+          ],
+        ));
   }
 }
-
-
-
 
 // class MatchDetails extends StatefulWidget {
 //   final Match matchData;
@@ -66,7 +59,7 @@ class _MatchDetails extends State<MatchDetails> {
 // }
 
 // class _MatchDetails extends State<MatchDetails> {
-  
+
 //   @override
 //   Widget build(BuildContext context) {
 //     return Consumer<RoundsRepository>(
@@ -75,7 +68,6 @@ class _MatchDetails extends State<MatchDetails> {
 //         List<Round> roundList = repository.getRoundsByMatchId(widget.matchData.id);
 //         List<PlayerScore> score = getScore(players, roundList);
 
-        
 //         String aux;
 //         final scoreRow = <Widget>[];
 //         final roundsNum = roundList.length;

@@ -8,14 +8,14 @@ class PlayerScore {
   int result;
 }
 
-List<PlayerScore> getScore(List<String> playerList, List<Round> roundList){
+List<PlayerScore> getScore(List<String> playerList, List<Round> roundList) {
   List<PlayerScore> scoreList = List();
 
-  for(int i = 0; i < playerList.length; i++){
+  for (int i = 0; i < playerList.length; i++) {
     PlayerScore score = new PlayerScore();
     score.name = playerList[i];
     score.result = 0;
-    for(int j = 0; j < roundList.length; j++){
+    for (int j = 0; j < roundList.length; j++) {
       score.result = score.result + roundList[j].results[i];
     }
     score.result = score.result;
@@ -26,6 +26,6 @@ List<PlayerScore> getScore(List<String> playerList, List<Round> roundList){
   return scoreList;
 }
 
-void sortScore(List<PlayerScore> scoreList){
+void sortScore(List<PlayerScore> scoreList) {
   scoreList.sort((a, b) => b.result.compareTo(a.result));
 }

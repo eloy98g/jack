@@ -34,17 +34,11 @@ class TextBoxCell extends StatelessWidget {
           horizontal: 16,
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 2,
-            color: textPrimaryColor
-          ),
+          borderSide: BorderSide(width: 2, color: textPrimaryColor),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 2,
-            color: textPrimaryColor
-          ),
+          borderSide: BorderSide(width: 2, color: textPrimaryColor),
           borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(

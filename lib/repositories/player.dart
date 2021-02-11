@@ -6,7 +6,6 @@ class PlayerRepository extends BaseRepository<PlayerService> {
   final String playerName;
 
   List<Player> _players;
-  
 
   PlayerRepository(PlayerService service, {this.playerName})
       : super(service: service);
@@ -15,10 +14,9 @@ class PlayerRepository extends BaseRepository<PlayerService> {
   Future<void> loadData() async {
     try {
       final response = await service.getPlayers(playerName);
-      
+
       _players = [
-        for (final document in response.documents)
-          Player.fromDocument(document)
+        for (final document in response.documents) Player.fromDocument(document)
       ];
 
       finishLoading();
@@ -29,26 +27,28 @@ class PlayerRepository extends BaseRepository<PlayerService> {
 
   List<Player> get players => _players;
 
-  List<Player> getPlayersByMatchId(String matchId){
+  List<Player> getPlayersByMatchId(String matchId) {
     try {
-      return players.where((player) => player.matchIds.contains(matchId)).toList();
+      return players
+          .where((player) => player.matchIds.contains(matchId))
+          .toList();
     } catch (_) {
       return null;
     }
   }
 
-  List<String> getPlayerNames(List<String> playerIds){
+  List<String> getPlayerNames(List<String> playerIds) {
     List<String> playerNames = List();
-    for(final id in playerIds){
+    for (final id in playerIds) {
       playerNames.add(getPlayerById(id).name);
     }
     return playerNames;
   }
 
-  Player getPlayerById(String playerId){
-    try{
+  Player getPlayerById(String playerId) {
+    try {
       return players.where((player) => player.id == playerId).single;
-    } catch(_){
+    } catch (_) {
       return null;
     }
   }

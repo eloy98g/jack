@@ -6,14 +6,13 @@ class Match {
   final List<String> players;
   final int color;
 
-  const Match({
-    this.id,
-    this.name,
-    this.game,
-    this.lastRoundDate,
-    this.players,
-    this.color
-  });
+  const Match(
+      {this.id,
+      this.name,
+      this.game,
+      this.lastRoundDate,
+      this.players,
+      this.color});
 
   factory Match.fromDocument(DocumentSnapshot document) {
     return Match(

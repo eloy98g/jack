@@ -22,73 +22,67 @@ class _RoundEditTab extends State<RoundEditTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RoundsRepository>
-      (builder: (context, repository, child) {
-        List<String> players = context.watch<PlayerRepository>().getPlayerNames(widget.data.players);
-        List<int> newResults = List();
-        String aux;
-        final scoreRow = <Widget>[];
-        final index = widget.data.players.length;
-        for(var i = 0; i < index ; i++){
-          scoreRow.add(
-            new Row(
-              children: [
-                Text(players[i]),
-                Separator(width: 8, height: 1),
-                Container(
-                  width: 100,
-                  height: 50,
-                  child: Expanded(
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      onChanged: (text) {
-                       setState(() {
-                          aux = text;
-                        });
-                      },
-                    )
-                  ),
-                )
-              ],
+    return Consumer<RoundsRepository>(builder: (context, repository, child) {
+      List<String> players =
+          context.watch<PlayerRepository>().getPlayerNames(widget.data.players);
+      List<int> newResults = List();
+      String aux;
+      final scoreRow = <Widget>[];
+      final index = widget.data.players.length;
+      for (var i = 0; i < index; i++) {
+        scoreRow.add(new Row(
+          children: [
+            Text(players[i]),
+            Separator(width: 8, height: 1),
+            Container(
+              width: 100,
+              height: 50,
+              child: Expanded(
+                  child: TextField(
+                keyboardType: TextInputType.number,
+                onChanged: (text) {
+                  setState(() {
+                    aux = text;
+                  });
+                },
+              )),
             )
-          );
-        }
-        return AlertDialog(
-          title: Text('Ronda ${index + 1}'),
-          content: Column(children: scoreRow),
-          actions: [
-            FlatButton(
-              child: Text('Ace'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
           ],
-        );      
-        // return Container(
-        //   width: 300,
-        //   height: 500,
-        //   child: AlertDialog(
-        //     backgroundColor: backgroundSecondaryColor,
-        //     content: Builder(
-        //       builder: (_) {
-        //         return Form(
-        //             key: _formKey,
-        //             child: Row(
-        //               children: [
-        //                 Column(
-        //                   children: scoreRow,
-        //                 )
-        //               ],
-        //             ),
-        //         );
-        //       },
-        //     ),
-        //   ),
-        // );
+        ));
       }
-    );
+      return AlertDialog(
+        title: Text('Ronda ${index + 1}'),
+        content: Column(children: scoreRow),
+        actions: [
+          FlatButton(
+            child: Text('Ace'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+      // return Container(
+      //   width: 300,
+      //   height: 500,
+      //   child: AlertDialog(
+      //     backgroundColor: backgroundSecondaryColor,
+      //     content: Builder(
+      //       builder: (_) {
+      //         return Form(
+      //             key: _formKey,
+      //             child: Row(
+      //               children: [
+      //                 Column(
+      //                   children: scoreRow,
+      //                 )
+      //               ],
+      //             ),
+      //         );
+      //       },
+      //     ),
+      //   ),
+      // );
+    });
   }
 }
-
-

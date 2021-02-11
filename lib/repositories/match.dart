@@ -16,10 +16,9 @@ class MatchesRepository extends BaseRepository<MatchesService> {
   Future<void> loadData() async {
     try {
       final response = await service.getMatchesByPlayerId(playerId);
-      
+
       _matches = [
-        for (final document in response.documents)
-          Match.fromDocument(document)
+        for (final document in response.documents) Match.fromDocument(document)
       ];
 
       finishLoading();

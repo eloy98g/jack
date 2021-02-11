@@ -4,23 +4,17 @@ import 'index.dart';
 
 class RoundsService extends BaseService {
   Future<QuerySnapshot> getRounds() async {
-    return Firestore.instance
-        .collection('rounds')
-        .getDocuments();
+    return Firestore.instance.collection('rounds').getDocuments();
   }
 
-  Future appendRound({
-    String id,
-    DateTime date,
-    String matchId,
-    int index,
-    List<int> results
-  }) async {
+  Future appendRound(
+      {String id,
+      DateTime date,
+      String matchId,
+      int index,
+      List<int> results}) async {
     if (id != null)
-      return Firestore.instance
-          .collection('rounds')
-          .document(id)
-          .updateData({
+      return Firestore.instance.collection('rounds').document(id).updateData({
         'date': date,
         'match_id': matchId,
         'index': index,

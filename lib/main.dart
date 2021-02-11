@@ -27,7 +27,7 @@ class JackApp extends StatelessWidget {
           create: (_) => null,
           update: (_, PlayerRepository repository, __) => MatchesRepository(
             MatchesService(),
-            playerId: '20xyGNDTzSHSUsIGvdge'/*repository.player.id*/,
+            playerId: '20xyGNDTzSHSUsIGvdge' /*repository.player.id*/,
           ),
         ),
         ChangeNotifierProxyProvider(
@@ -58,4 +58,3 @@ class JackApp extends StatelessWidget {
 //     );
 //   }
 // }
-

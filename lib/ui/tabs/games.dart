@@ -18,30 +18,34 @@ class Games extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<RoundsRepository>(
       builder: (context, repository, child) =>
-      AnnotatedRegion<SystemUiOverlayStyle>(
+          AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: repository.isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView(
-              children: [
-                Column(
-                  children: [
-                    Text('estoy eh'),
-                    for (final round in repository.getRoundsByMatchId('G4QLlGk4uo08f5qdwsHI'))
-                      Column(
-                        children: [
-                          Text('---------DEBUGGING---------'),
-                          Text(round.date.toString()),
-                          Text(round.results.length.toString())
-                        ],
-                      ),
-                      Separator(width: 1,height: 10,)
-                  ],
-                )
-              ],
-          ),
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView(
+                children: [
+                  Column(
+                    children: [
+                      Text('estoy eh'),
+                      for (final round in repository
+                          .getRoundsByMatchId('G4QLlGk4uo08f5qdwsHI'))
+                        Column(
+                          children: [
+                            Text('---------DEBUGGING---------'),
+                            Text(round.date.toString()),
+                            Text(round.results.length.toString())
+                          ],
+                        ),
+                      Separator(
+                        width: 1,
+                        height: 10,
+                      )
+                    ],
+                  )
+                ],
+              ),
       ),
     );
   }

@@ -16,29 +16,22 @@ class _HomeState extends State<Home> {
     Games(),
   ];
 
-  Widget appBarButton(String title, int index){
+  Widget appBarButton(String title, int index) {
     return InkWell(
       excludeFromSemantics: true,
       radius: 0,
       highlightColor: Color(0x00000000),
       child: Container(
-        decoration:  _selectedIndex == index ? BoxDecoration(
-          border: Border(
-            bottom:  BorderSide(
-              color: textPrimaryColor,
-              width: 2.0
-            )
-          )
-        ) : BoxDecoration(), 
+        decoration: _selectedIndex == index
+            ? BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(color: textPrimaryColor, width: 2.0)))
+            : BoxDecoration(),
         width: MediaQuery.of(context).size.width / 2,
         alignment: Alignment.center,
-        child: Text(
-          title,
-          style: TextStyle(
-            color: textPrimaryColor,
-            fontWeight: FontWeight.bold
-          ) 
-        ),
+        child: Text(title,
+            style: TextStyle(
+                color: textPrimaryColor, fontWeight: FontWeight.bold)),
       ),
       onTap: () => setState(() => _selectedIndex = index),
     );

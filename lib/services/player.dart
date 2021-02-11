@@ -10,4 +10,3 @@ class PlayerService extends BaseService {
         .getDocuments();
   }
 }
-

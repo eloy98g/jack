@@ -3,7 +3,6 @@ import '../services/index.dart';
 import 'index.dart';
 import './player.dart';
 
-
 class RoundsRepository extends BaseRepository<RoundsService> {
   final String matchId;
 
@@ -19,8 +18,7 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     try {
       final response = await service.getRounds();
       _rounds = [
-        for (final document in response.documents)
-          Round.fromDocument(document)
+        for (final document in response.documents) Round.fromDocument(document)
       ];
       finishLoading();
     } catch (_) {
@@ -30,7 +28,7 @@ class RoundsRepository extends BaseRepository<RoundsService> {
 
   List<Round> get rounds => _rounds;
 
-  List<Round> getRoundsByMatchId(String matchId){
+  List<Round> getRoundsByMatchId(String matchId) {
     return _rounds.where((round) => round.matchId == matchId).toList();
   }
 
@@ -42,22 +40,21 @@ class RoundsRepository extends BaseRepository<RoundsService> {
     }
   }
 
-  void sortRounds(List<Round> roundList){
+  void sortRounds(List<Round> roundList) {
     roundList.sort((a, b) => a.date.compareTo(b.date));
   }
 
-  DateTime getLatestDate(List<Round> roundList){
+  DateTime getLatestDate(List<Round> roundList) {
     sortRounds(roundList);
     return roundList.last.date;
   }
 
-  Future<void> appendRound({
-    String id,
-    DateTime date,
-    String matchId,
-    int index,
-    List<int> results
-  }) {
+  Future<void> appendRound(
+      {String id,
+      DateTime date,
+      String matchId,
+      int index,
+      List<int> results}) {
     return service
         .appendRound(
           id: id,

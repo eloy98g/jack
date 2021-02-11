@@ -13,12 +13,13 @@ class MatchCard extends StatelessWidget {
 
   const MatchCard(this.data, {Key key}) : super(key: key);
 
-  Widget profilePic(String url){
+  Widget profilePic(String url) {
     return Container(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25.0),
         child: CachedNetworkImage(
-          imageUrl: url ?? 'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg',
+          imageUrl: url ??
+              'https://jesussavesmbchurch.org/wp-content/themes/grace-church/images/generic-profile.jpg',
           height: 33,
           width: 33,
           fit: BoxFit.cover,
@@ -80,7 +81,7 @@ class MatchCard extends StatelessWidget {
                       width: 23,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black),
-                        color:  Color(data.color),
+                        color: Color(data.color),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -88,10 +89,9 @@ class MatchCard extends StatelessWidget {
                     Text(
                       data.game,
                       style: TextStyle(
-                        color: textPrimaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold
-                      ),
+                          color: textPrimaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
                     ),
                     Separator(width: 5, height: 1),
                     Text(
@@ -105,38 +105,36 @@ class MatchCard extends StatelessWidget {
                 ),
                 Separator(width: 1, height: 12),
                 Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Consumer<PlayerRepository>(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Consumer<PlayerRepository>(
                         builder: (context, repository, child) {
-                          return Expanded(
-                            flex: 2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Wrap(
-                                  spacing: 5,
-                                  runSpacing: 5,
-                                  alignment: WrapAlignment.start,
-                                  children: [
-                                    for (final player in repository.getPlayersByMatchId(data.id))
-                                      profilePic(player.photoUrl)
-                                  ],
-                                ),
-                              ],
-                            )
-                          );
-                        }
-                      ),
-                      Separator(width: 12,height: 1),
-                      Expanded( 
-                        flex: 2,
-                        child: ScoreTab(data),
-                      ),
-                    ],
-                  )
-                )
+                      return Expanded(
+                          flex: 2,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Wrap(
+                                spacing: 5,
+                                runSpacing: 5,
+                                alignment: WrapAlignment.start,
+                                children: [
+                                  for (final player in repository
+                                      .getPlayersByMatchId(data.id))
+                                    profilePic(player.photoUrl)
+                                ],
+                              ),
+                            ],
+                          ));
+                    }),
+                    Separator(width: 12, height: 1),
+                    Expanded(
+                      flex: 2,
+                      child: ScoreTab(data),
+                    ),
+                  ],
+                ))
               ],
             ),
           ),
