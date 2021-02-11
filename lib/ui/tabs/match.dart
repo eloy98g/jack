@@ -27,17 +27,27 @@ class _MatchDetails extends State<MatchDetails> {
         backgroundColor: backgroundPrimaryColor,
         title: Text(widget.matchData.name),
       ),
-      body:  InkWell(
-        excludeFromSemantics: true,
-        radius: 0,
-        highlightColor: Color(0x00000000),
-        child: Container(
-          width: 300,
-          height: 180, //delete this
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18.0),
+      body:  Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Separator(width: 1, height: 32),
+                Container(
+                  width: 300,
+                  height: 180, //delete this
+                  decoration: BoxDecoration(
+                    color: backgroundPrimaryColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18.0),
+                  )
+                )
+            ],
           )
-        )
+        ],
       )
     );
   }
