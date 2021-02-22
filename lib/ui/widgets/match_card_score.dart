@@ -21,15 +21,16 @@ class ScoreTab extends StatelessWidget {
   Color setColor(index){
     switch(index){
       case 0:
-        return Color(0xFFAAAD16);
+        return scoreFirstElement;
       case 1:
-        return Color(0xFFA0A16D);
+        return scoreSecondElement;
       case 2:
-        return Color(0xFFAF741C);
+        return scoreThirdElement;
       default:
         return textPrimaryColor;
     }
   }
+  
   @override
   Widget build(BuildContext context) {
     List<String> players =
