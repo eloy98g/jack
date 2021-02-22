@@ -18,6 +18,18 @@ class ScoreTab extends StatelessWidget {
     this.fontSize,
   }) : super(key: key);
 
+  Color setColor(index){
+    switch(index){
+      case 0:
+        return Color(0xFFAAAD16);
+      case 1:
+        return Color(0xFFA0A16D);
+      case 2:
+        return Color(0xFFAF741C);
+      default:
+        return textPrimaryColor;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     List<String> players =
@@ -41,14 +53,14 @@ class ScoreTab extends StatelessWidget {
                   Text(
                     '${((scores.indexOf(score)) + 1).toString()}º   ${score.name}',
                     style: TextStyle(
-                      color: textPrimaryColor,
+                      color: setColor(scores.indexOf(score)),
                       fontSize: fontSize,
                     ),
                   ),
                   Text(
                     score.result.toString(),
                     style: TextStyle(
-                      color: textPrimaryColor,
+                      color: setColor(scores.indexOf(score)),
                       fontSize: fontSize,
                     ),
                   )

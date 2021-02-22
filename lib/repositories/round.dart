@@ -41,7 +41,7 @@ class RoundsRepository extends BaseRepository<RoundsService> {
   }
 
   int getAmoutOfRounds(String matchId){
-    return getRoundsByMatchId(matchId).length +1;
+    return getRoundsByMatchId(matchId).length + 1;
   }
 
   void sortRounds(List<Round> roundList) {
