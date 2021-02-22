@@ -121,7 +121,7 @@ class MatchCard extends StatelessWidget {
                                 alignment: WrapAlignment.start,
                                 children: [
                                   for (final player in repository
-                                      .getPlayersByMatchId(data.id))
+                                      .getPlayersByMatchId(data.players))
                                     profilePic(player.photoUrl)
                                 ],
                               ),

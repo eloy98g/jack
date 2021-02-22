@@ -27,14 +27,12 @@ class PlayerRepository extends BaseRepository<PlayerService> {
 
   List<Player> get players => _players;
 
-  List<Player> getPlayersByMatchId(String matchId) {
-    try {
-      return players
-          .where((player) => player.matchIds.contains(matchId))
-          .toList();
-    } catch (_) {
-      return null;
+  List<Player> getPlayersByMatchId(List<String> playerIds) {
+    List<Player> playerList = List();
+    for (final id in playerIds) {
+      playerList.add(getPlayerById(id));
     }
+    return playerList;
   }
 
   List<String> getPlayerNames(List<String> playerIds) {
