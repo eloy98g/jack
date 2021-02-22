@@ -131,7 +131,7 @@ class MatchCard extends StatelessWidget {
                     Separator(width: 12, height: 1),
                     Expanded(
                       flex: 2,
-                      child: ScoreTab(data),
+                      child: ScoreTab(data: data, fontSize: 12),
                     ),
                   ],
                 ))

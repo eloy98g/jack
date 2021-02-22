@@ -10,8 +10,14 @@ import '../../models/score.dart';
 
 class ScoreTab extends StatelessWidget {
   final Match data;
+  final double fontSize;
 
-  const ScoreTab(this.data);
+  const ScoreTab({
+    Key key,
+    this.data,
+    this.fontSize,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     List<String> players =
@@ -22,7 +28,7 @@ class ScoreTab extends StatelessWidget {
     final scores = getScore(players, rounds);
 
     return Container(
-        child: Column(
+        child: Row(
       children: [
         Expanded(
             child: Column(
@@ -33,17 +39,17 @@ class ScoreTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${((scores.indexOf(score))+1).toString()}º   ${score.name}',
+                    '${((scores.indexOf(score)) + 1).toString()}º   ${score.name}',
                     style: TextStyle(
                       color: textPrimaryColor,
-                      fontSize: 12,
+                      fontSize: fontSize,
                     ),
                   ),
                   Text(
                     score.result.toString(),
                     style: TextStyle(
                       color: textPrimaryColor,
-                      fontSize: 12,
+                      fontSize: fontSize,
                     ),
                   )
                 ],
