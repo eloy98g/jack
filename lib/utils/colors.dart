@@ -12,3 +12,5 @@ const textPrimaryColor = Color(0xFFAEAEAE);
 const scoreFirstElement = Color(0xFFAAAD16);
 const scoreSecondElement = Color(0xFFA0A16D);
 const scoreThirdElement = Color(0xFFAF741C);
+
+const borderButton = Color(0xff010F1C);

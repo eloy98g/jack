@@ -50,18 +50,55 @@ class _RoundEditTab extends State<RoundEditTab> {
           ],
         ));
       }
+
       return AlertDialog(
-        title: Text('Ronda ${index + 1}'),
-        content: Column(children: scoreRow),
+        backgroundColor: backgroundThirdColor,
+        
+        title: Text(
+          'Nueva Ronda',
+          style: TextStyle(color: textPrimaryColor),
+        ),
+        content: Text(
+          'Esto es un placeholder',
+        ),
         actions: [
-          FlatButton(
-            child: Text('Ace'),
+          RaisedButton(
+            color: textPrimaryColor,
+            child: Text(
+              'Cancelar',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          RaisedButton(
+            color: textPrimaryColor,
+            child: Text(
+              'Aceptar',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },
-          ),
+          )
         ],
       );
+
+      // return AlertDialog(
+      //   title: Text('Ronda ${index + 1}'),
+      //   content: Column(children: scoreRow),
+      //   actions: [
+      //     FlatButton(
+      //       child: Text('Ace'),
+      //       onPressed: () {
+      //         Navigator.of(context).pop();
+      //       },
+      //     ),
+      //   ],
+      // );
       // return Container(
       //   width: 300,
       //   height: 500,

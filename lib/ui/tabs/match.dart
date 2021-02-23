@@ -23,13 +23,14 @@ class _MatchDetails extends State<MatchDetails> {
         .watch<RoundsRepository>()
         .getRoundsByMatchId(widget.matchData.id);
 
-    List<String> players =
-        context.watch<PlayerRepository>().getPlayerNames(widget.matchData.players);
+    List<String> players = context
+        .watch<PlayerRepository>()
+        .getPlayerNames(widget.matchData.players);
 
     bool hasMaxRound = widget.matchData.maxRounds != 0;
     bool hasMaxPoints = widget.matchData.maxPoints != 0;
 
-    DateTime lastDate =  context.watch<RoundsRepository>().getLatestDate(rounds);
+    DateTime lastDate = context.watch<RoundsRepository>().getLatestDate(rounds);
 
     return Scaffold(
         backgroundColor: backgroundSecondaryColor,
@@ -118,7 +119,38 @@ class _MatchDetails extends State<MatchDetails> {
                               ),
                             ),
                             Separator(width: 1, height: 12),
-                            //ScoreTab(data: widget.matchData, fontSize: 16),
+                            Container(
+                              width: 45,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                color: backgroundThirdColor,
+                                border: Border.all(
+                                  color: borderButton,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(45),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    spreadRadius: 0,
+                                    blurRadius: 2,
+                                    offset: Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: IconButton(
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (_) =>
+                                      RoundEditTab(data: widget.matchData),
+                                ),
+                                icon: Icon(
+                                  Icons.add,
+                                  color: textPrimaryColor,
+                                  size: 24,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
