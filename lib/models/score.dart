@@ -18,11 +18,28 @@ List<PlayerScore> getFinalScore(List<String> playerList, List<Round> roundList) 
     for (int j = 0; j < roundList.length; j++) {
       score.result = score.result + roundList[j].results[i];
     }
-    score.result = score.result;
     scoreList.insert(i, score);
   }
 
   sortScore(scoreList);
+  return scoreList;
+}
+
+List<List<PlayerScore>> getScoreList(List<String> playerList, List<Round> roundList){
+  List<List<PlayerScore>> scoreList = List();
+  List<PlayerScore> scores = List();
+
+  for (int i = 0; i < playerList.length; i++) {
+    for (int j = 0; j < roundList.length; j++) {
+      PlayerScore score = new PlayerScore();
+      score.name = playerList[i];
+      score.result = roundList[j].results[i];
+      scores.insert(i, score);
+    }
+    sortScore(scores);
+    scoreList.insert(i, scores);
+  }
+
   return scoreList;
 }
 
