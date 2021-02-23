@@ -38,7 +38,7 @@ class ScoreTab extends StatelessWidget {
     List<Round> rounds =
         context.watch<RoundsRepository>().getRoundsByMatchId(data.id);
 
-    final scores = getScore(players, rounds);
+    final scores = getFinalScore(players, rounds);
 
     return Container(
         child: Row(

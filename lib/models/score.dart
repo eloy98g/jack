@@ -8,7 +8,7 @@ class PlayerScore {
   int result;
 }
 
-List<PlayerScore> getScore(List<String> playerList, List<Round> roundList) {
+List<PlayerScore> getFinalScore(List<String> playerList, List<Round> roundList) {
   List<PlayerScore> scoreList = List();
 
   for (int i = 0; i < playerList.length; i++) {

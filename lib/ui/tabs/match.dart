@@ -23,6 +23,9 @@ class _MatchDetails extends State<MatchDetails> {
         .watch<RoundsRepository>()
         .getRoundsByMatchId(widget.matchData.id);
 
+    List<String> players =
+        context.watch<PlayerRepository>().getPlayerNames(widget.matchData.players);
+
     bool hasMaxRound = widget.matchData.maxRounds != 0;
     bool hasMaxPoints = widget.matchData.maxPoints != 0;
 
@@ -115,7 +118,7 @@ class _MatchDetails extends State<MatchDetails> {
                               ),
                             ),
                             Separator(width: 1, height: 12),
-                            ScoreTab(data: widget.matchData, fontSize: 16),
+                            //ScoreTab(data: widget.matchData, fontSize: 16),
                           ],
                         ),
                       ),
