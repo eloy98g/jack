@@ -151,6 +151,8 @@ class _MatchDetails extends State<MatchDetails> {
                                 ),
                               ),
                             ),
+                            Separator(height: 12, width: 1),
+                            RoundList(rounds: rounds, players: players),
                           ],
                         ),
                       ),
