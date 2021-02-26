@@ -30,32 +30,18 @@ List<PlayerScore> getFinalScore(
 List<List<PlayerScore>> getScoreList(
     List<String> playerList, List<Round> roundList) {
   List<List<PlayerScore>> scoreList = List();
-  List<PlayerScore> scores = new List();
 
   for (int i = 0; i < roundList.length; i++) {
-    scores.clear();
-    print('remueve');
+    List<PlayerScore> scores = new List();
     for (int j = 0; j < playerList.length; j++) {
       PlayerScore score = new PlayerScore();
       score.name = playerList[j];
       score.result = roundList[i].results[j];
       scores.insert(j, score);
-      print('creada: ${score.name} ${score.result}');
     }
     scoreList.insert(i, scores);
-    print('inserta');
   }
-
-  print('----------------------------');
-  for (int i = 0; i < scoreList.length; i++) {
-    print('RONDA $i');
-    print('Longitud list list: ${scoreList.length}');
-    print('Longitud list: ${scoreList[0].length}');
-    for (int j = 0; j < playerList.length; j++) {
-      print('${scoreList[i][j].name} --- ${scoreList[i][j].result}');
-    }
-    print('----------------------------');
-  }
+  
   return scoreList;
 }
 
