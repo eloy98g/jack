@@ -40,6 +40,7 @@ class _RoundListState extends State<RoundList> {
               children: [
                 Column(
                   children: [
+                    SizedBox(height: 10),
                     Text(
                       'Ronda ${((scoreList.indexOf(round)) + 1).toString()}',
                       style: TextStyle(
@@ -55,6 +56,7 @@ class _RoundListState extends State<RoundList> {
                         fontSize: 12,
                       ),
                     ),
+                    SizedBox(height: 10),
                   ],
                 ),
                 Separator(width: 34),
@@ -81,7 +83,6 @@ class _RoundListState extends State<RoundList> {
                             )
                           ],
                         ),
-                      Separator(height: 20)
                     ],
                   ),
                 ),

@@ -46,7 +46,7 @@ class _MatchDetails extends State<MatchDetails> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Separator(width: 1, height: 32),
+                    Separator(height: 32),
                     Container(
                         width: 300,
                         decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class _MatchDetails extends State<MatchDetails> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Separator(width: 1, height: 12),
+                                Separator(height: 12),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
@@ -82,13 +82,13 @@ class _MatchDetails extends State<MatchDetails> {
                                     ),
                                   ),
                                 ),
-                                Separator(width: 1, height: 12),
+                                Separator(height: 12),
                                 ScoreTab(data: widget.matchData, fontSize: 16),
                               ],
                             ),
                           ),
                         )),
-                    Separator(width: 1, height: 32),
+                    Separator(height: 32),
                     Container(
                         width: 300,
                         decoration: BoxDecoration(
@@ -109,7 +109,7 @@ class _MatchDetails extends State<MatchDetails> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Separator(width: 1, height: 12),
+                                Separator(height: 12),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
@@ -120,7 +120,7 @@ class _MatchDetails extends State<MatchDetails> {
                                     ),
                                   ),
                                 ),
-                                Separator(width: 1, height: 12),
+                                Separator(height: 12),
                                 Container(
                                   width: 45,
                                   height: 45,
@@ -159,7 +159,8 @@ class _MatchDetails extends State<MatchDetails> {
                               ],
                             ),
                           ),
-                        ))
+                        )),
+                        Separator(height: 32),
                   ],
                 )
               ],
