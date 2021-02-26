@@ -32,50 +32,63 @@ class _RoundListState extends State<RoundList> {
   Widget build(BuildContext context) {
     List<List<PlayerScore>> scoreList =
         getScoreList(widget.players, widget.rounds);
-    return Column(
-      children: [
-        for (final round in scoreList)
-          Row(
-            children: [
-              Text(
-                'Ronda ${((scoreList.indexOf(round)) + 1).toString()}',
-                style: TextStyle(
-                  color: textPrimaryColor,
-                  fontSize: 12,
-                ),
-              ),
-              Separator(height: 1, width: 34),
-              Expanded(
-                child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (final score in round)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${score.name}',
-                          style: TextStyle(
-                            color: setColor(round.indexOf(score)),
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          score.result.toString(),
-                          style: TextStyle(
-                            color: setColor(round.indexOf(score)),
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
+    return Container(
+      child: Column(
+        children: [
+          for (final round in scoreList)
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'Ronda ${((scoreList.indexOf(round)) + 1).toString()}',
+                      style: TextStyle(
+                        color: textPrimaryColor,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      getFormatedDate(
+                          widget.rounds[(scoreList.indexOf(round))].date),
+                      style: TextStyle(
+                        color: textPrimaryColor,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
-              ),
-              Separator(height: 12, width: 1),
-            ],
-          )
-      ],
+                Separator(width: 34),
+                Expanded(
+                  child: Column(
+                    children: [
+                      for (final score in round)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${score.name}',
+                              style: TextStyle(
+                                color: setColor(round.indexOf(score)),
+                                fontSize: 12,
+                              ),
+                            ),
+                            Text(
+                              score.result.toString(),
+                              style: TextStyle(
+                                color: setColor(round.indexOf(score)),
+                                fontSize: 12,
+                              ),
+                            )
+                          ],
+                        ),
+                      Separator(height: 20)
+                    ],
+                  ),
+                ),
+              ],
+            )
+        ],
+      ),
     );
   }
 }

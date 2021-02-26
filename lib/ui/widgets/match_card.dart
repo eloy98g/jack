@@ -128,7 +128,7 @@ class MatchCard extends StatelessWidget {
                             ],
                           ));
                     }),
-                    Separator(width: 12, height: 1),
+                    Separator(width: 12),
                     Expanded(
                       flex: 2,
                       child: ScoreTab(data: data, fontSize: 12),
