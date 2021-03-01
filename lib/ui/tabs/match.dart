@@ -75,7 +75,7 @@ class _MatchDetails extends State<MatchDetails> {
                                         ? 'Ronda ${rounds.length.toString()} de ${widget.matchData.maxRounds}'
                                         : hasMaxPoints
                                             ? 'Meta: ${widget.matchData.maxPoints} puntos'
-                                            : '\u221E',
+                                            : 'Partida sin meta',
                                     style: TextStyle(
                                       color: textPrimaryColor,
                                       fontSize: 12,
