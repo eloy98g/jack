@@ -38,10 +38,12 @@ List<List<PlayerScore>> getScoreList(
       score.name = playerList[j];
       score.result = roundList[i].results[j];
       scores.insert(j, score);
+      sortScore(scores);
     }
+    
     scoreList.insert(i, scores);
   }
-  
+
   return scoreList;
 }
 
