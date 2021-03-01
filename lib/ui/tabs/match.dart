@@ -31,6 +31,7 @@ class _MatchDetails extends State<MatchDetails> {
     bool hasMaxPoints = widget.matchData.maxPoints != 0;
 
     DateTime lastDate = context.watch<RoundsRepository>().getLatestDate(rounds);
+    final int numRounds = rounds.length;
 
     return Scaffold(
         backgroundColor: backgroundSecondaryColor,
@@ -72,7 +73,7 @@ class _MatchDetails extends State<MatchDetails> {
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     hasMaxRound
-                                        ? 'Ronda ${rounds.length.toString()} de ${widget.matchData.maxRounds}'
+                                        ? 'Ronda ${numRounds.toString()} de ${widget.matchData.maxRounds}'
                                         : hasMaxPoints
                                             ? 'Meta: ${widget.matchData.maxPoints} puntos'
                                             : 'Partida sin meta',
@@ -144,7 +145,7 @@ class _MatchDetails extends State<MatchDetails> {
                                     onPressed: () => showDialog(
                                       context: context,
                                       builder: (_) =>
-                                          RoundEditTab(data: widget.matchData),
+                                          RoundEditTab(data: widget.matchData, numRounds: numRounds),
                                     ),
                                     icon: Icon(
                                       Icons.add,

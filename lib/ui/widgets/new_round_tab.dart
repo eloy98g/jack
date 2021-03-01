@@ -10,8 +10,9 @@ import '../../models/index.dart';
 
 class RoundEditTab extends StatefulWidget {
   final Match data;
+  final int numRounds;
 
-  const RoundEditTab({Key key, this.data}) : super(key: key);
+  const RoundEditTab({Key key, this.data, this.numRounds}) : super(key: key);
 
   @override
   _RoundEditTab createState() => _RoundEditTab();
@@ -27,6 +28,8 @@ class _RoundEditTab extends State<RoundEditTab> {
           context.watch<PlayerRepository>().getPlayerNames(widget.data.players);
       List<int> newResults = List();
       String aux;
+      final int roundCount = widget.numRounds + 1;
+
       final scoreRow = <Widget>[];
       final index = widget.data.players.length;
       for (var i = 0; i < index; i++) {
@@ -53,36 +56,58 @@ class _RoundEditTab extends State<RoundEditTab> {
 
       return AlertDialog(
         backgroundColor: backgroundThirdColor,
-        
-        title: Text(
-          'Nueva Ronda',
-          style: TextStyle(color: textPrimaryColor),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Nueva Ronda',
+              style: TextStyle(
+                color: textPrimaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Separator(height: 12),
+            Text(
+              widget.data.maxRounds != 0
+                  ? 'Ronda ${roundCount.toString()} / ${widget.data.maxRounds}'
+                  : 'Ronda ${roundCount.toString()} / ?',
+              style: TextStyle(
+                color: textPrimaryColor,
+              ),
+            ),
+          ],
         ),
-        content: Text(
-          'Esto es un placeholder',
-        ),
+        content: Container(),
         actions: [
-          RaisedButton(
-            color: textPrimaryColor,
-            child: Text(
-              'Cancelar',
-              style: TextStyle(
-                color: Colors.white,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              RaisedButton(
+                color: textPrimaryColor,
+                child: Text(
+                  'Cancelar',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () => Navigator.of(context).pop(),
               ),
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          RaisedButton(
-            color: textPrimaryColor,
-            child: Text(
-              'Aceptar',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+              Separator(width: 12),
+              RaisedButton(
+                color: textPrimaryColor,
+                child: Text(
+                  'Aceptar',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
           )
         ],
       );
