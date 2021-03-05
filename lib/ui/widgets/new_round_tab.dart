@@ -26,26 +26,33 @@ class _RoundEditTab extends State<RoundEditTab> {
     return Consumer<RoundsRepository>(builder: (context, repository, child) {
       List<String> players =
           context.watch<PlayerRepository>().getPlayerNames(widget.data.players);
-      List<int> newResults = List();
       String aux;
       final int roundCount = widget.numRounds + 1;
 
       final scoreRow = <Widget>[];
-      final index = widget.data.players.length;
-      for (var i = 0; i < index; i++) {
+      final String _id = null;
+      List<int> newResults = List();
+      for(int i = 0; i<players.length; i++){
+          newResults.add(0);
+        }
+
+
+      for (var i = 0; i < players.length; i++) {
         scoreRow.add(new Row(
           children: [
             Text(players[i]),
-            Separator(width: 8, height: 1),
+            Separator(width: 8),
             Container(
-              width: 100,
-              height: 50,
+              width: 80,
+              height: 30,
               child: Expanded(
                   child: TextField(
                 keyboardType: TextInputType.number,
                 onChanged: (text) {
-                  setState(() {
+                  setState(() async {
                     aux = text;
+                    newResults[i] = int.parse(aux);
+                    print(newResults[i]);
                   });
                 },
               )),
@@ -64,6 +71,7 @@ class _RoundEditTab extends State<RoundEditTab> {
               'Nueva Ronda',
               style: TextStyle(
                 color: textPrimaryColor,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -73,12 +81,24 @@ class _RoundEditTab extends State<RoundEditTab> {
                   ? 'Ronda ${roundCount.toString()} / ${widget.data.maxRounds}'
                   : 'Ronda ${roundCount.toString()} / ?',
               style: TextStyle(
+                fontSize: 16,
                 color: textPrimaryColor,
               ),
             ),
           ],
         ),
-        content: Container(),
+        content: Container(
+          child: Form(
+            key: _formKey,
+            child: Row(
+              children: [
+                Column(
+                  children: scoreRow,
+                )
+              ],
+            ),
+          ),
+        ),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -103,8 +123,16 @@ class _RoundEditTab extends State<RoundEditTab> {
                     color: Colors.white,
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
+                onPressed: () async {
+                  repository
+                      .appendRound(
+                        id: _id,
+                        date: DateTime.now(),
+                        matchId: widget.data.id,
+                        index: roundCount,
+                        results: newResults,
+                      )
+                      .then((value) => Navigator.of(context).pop());
                 },
               )
             ],
