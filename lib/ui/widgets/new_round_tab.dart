@@ -32,19 +32,27 @@ class _RoundEditTab extends State<RoundEditTab> {
       final scoreRow = <Widget>[];
       final String _id = null;
       List<int> newResults = List();
-      for(int i = 0; i<players.length; i++){
-          newResults.add(0);
-        }
-
+      for (int i = 0; i < players.length; i++) {
+        newResults.add(0);
+      }
 
       for (var i = 0; i < players.length; i++) {
         scoreRow.add(new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(players[i]),
-            Separator(width: 8),
+            Text(
+              players[i],
+              style: TextStyle(color: borderButton, fontSize: 16),
+            ),
+            Separator(width: 40),
             Container(
-              width: 80,
-              height: 30,
+              width: 100,
+              height: 32,
+              decoration: BoxDecoration(
+                color: textPrimaryColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: Expanded(
                   child: TextField(
                 keyboardType: TextInputType.number,
@@ -52,14 +60,51 @@ class _RoundEditTab extends State<RoundEditTab> {
                   setState(() async {
                     aux = text;
                     newResults[i] = int.parse(aux);
-                    print(newResults[i]);
                   });
                 },
               )),
             )
           ],
         ));
+        scoreRow.add(Separator(height: 8));
       }
+      scoreRow.add(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          RaisedButton(
+            color: textPrimaryColor,
+            child: Text(
+              'Cancelar',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          Separator(width: 12),
+          RaisedButton(
+            color: textPrimaryColor,
+            child: Text(
+              'Aceptar',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () async {
+              repository
+                  .appendRound(
+                    id: _id,
+                    date: DateTime.now(),
+                    matchId: widget.data.id,
+                    index: roundCount,
+                    results: newResults,
+                  )
+                  .then((value) => Navigator.of(context).pop());
+            },
+          )
+        ],
+      ));
 
       return AlertDialog(
         backgroundColor: backgroundThirdColor,
@@ -87,92 +132,23 @@ class _RoundEditTab extends State<RoundEditTab> {
             ),
           ],
         ),
-        content: Container(
-          child: Form(
-            key: _formKey,
-            child: Row(
-              children: [
-                Column(
-                  children: scoreRow,
-                )
-              ],
-            ),
+        content: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Container(
+                width: 273,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: scoreRow,
+                    ),
+                  ],
+                )),
           ),
         ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              RaisedButton(
-                color: textPrimaryColor,
-                child: Text(
-                  'Cancelar',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              Separator(width: 12),
-              RaisedButton(
-                color: textPrimaryColor,
-                child: Text(
-                  'Aceptar',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () async {
-                  repository
-                      .appendRound(
-                        id: _id,
-                        date: DateTime.now(),
-                        matchId: widget.data.id,
-                        index: roundCount,
-                        results: newResults,
-                      )
-                      .then((value) => Navigator.of(context).pop());
-                },
-              )
-            ],
-          )
-        ],
       );
-
-      // return AlertDialog(
-      //   title: Text('Ronda ${index + 1}'),
-      //   content: Column(children: scoreRow),
-      //   actions: [
-      //     FlatButton(
-      //       child: Text('Ace'),
-      //       onPressed: () {
-      //         Navigator.of(context).pop();
-      //       },
-      //     ),
-      //   ],
-      // );
-      // return Container(
-      //   width: 300,
-      //   height: 500,
-      //   child: AlertDialog(
-      //     backgroundColor: backgroundSecondaryColor,
-      //     content: Builder(
-      //       builder: (_) {
-      //         return Form(
-      //             key: _formKey,
-      //             child: Row(
-      //               children: [
-      //                 Column(
-      //                   children: scoreRow,
-      //                 )
-      //               ],
-      //             ),
-      //         );
-      //       },
-      //     ),
-      //   ),
-      // );
     });
   }
 }
