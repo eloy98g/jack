@@ -57,14 +57,12 @@ class RoundsRepository extends BaseRepository<RoundsService> {
       {String id,
       DateTime date,
       String matchId,
-      int index,
       List<int> results}) {
     return service
         .appendRound(
           id: id,
           date: date,
           matchId: matchId,
-          index: index,
           results: results,
         )
         .then((value) async => await loadData());

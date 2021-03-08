@@ -14,3 +14,6 @@ const scoreSecondElement = Color(0xFFA0A16D);
 const scoreThirdElement = Color(0xFFAF741C);
 
 const borderButton = Color(0xff010F1C);
+
+//utils
+const transparent = Color(0x00000000);

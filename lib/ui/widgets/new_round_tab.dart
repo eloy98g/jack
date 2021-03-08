@@ -67,8 +67,6 @@ class _RoundEditTab extends State<RoundEditTab> {
             child: Container(
                 width: 273,
                 child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Column(
@@ -96,16 +94,30 @@ class _RoundEditTab extends State<RoundEditTab> {
                                         color: textPrimaryColor,
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Expanded(
-                                          child: TextField(
-                                        keyboardType: TextInputType.number,
-                                        onChanged: (text) {
-                                          setState(() async {
-                                            aux = text;
-                                            newResults[index] = int.parse(aux);
-                                          });
-                                        },
-                                      )),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 5),
+                                        child: Expanded(
+                                            child: TextField(
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          keyboardType:
+                                              TextInputType.numberWithOptions(
+                                                  signed: true),
+                                          onChanged: (text) {
+                                            setState(() async {
+                                              aux = text;
+                                              newResults[index] =
+                                                  int.parse(aux);
+                                            });
+                                          },
+                                        )),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -176,7 +188,6 @@ class _RoundEditTab extends State<RoundEditTab> {
                                         id: _id,
                                         date: DateTime.now(),
                                         matchId: widget.data.id,
-                                        index: roundCount,
                                         results: newResults,
                                       )
                                       .then((value) =>
