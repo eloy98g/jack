@@ -37,7 +37,7 @@ class MatchCard extends StatelessWidget {
     return InkWell(
       excludeFromSemantics: true,
       radius: 0,
-      highlightColor: Color(0x00000000),
+      highlightColor: transparent,
       child: Container(
         width: 300,
         height: 180,

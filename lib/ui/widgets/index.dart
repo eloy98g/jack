@@ -1,5 +1,7 @@
 export 'match_card.dart';
 export 'match_card_score.dart';
+export 'match_stats.dart';
+export 'rounds_chart.dart';
 export 'new_round_tab.dart';
 export 'small_progress_indiator.dart';
 export 'separator.dart';
