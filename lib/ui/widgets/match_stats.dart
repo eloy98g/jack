@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 import '../../models/index.dart';
 import '../../utils/index.dart';
@@ -48,7 +47,7 @@ class MatchStats extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                    child: RoundsChart(),
+                    child: LineChartSample1(),
                   )
                 ],
               )
