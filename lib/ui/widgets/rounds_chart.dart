@@ -6,8 +6,10 @@ import '../../models/index.dart';
 class GameChart extends StatefulWidget {
   final List<Round> rounds;
   final List<String> players;
+  final List<Color> colors;
 
-  const GameChart({Key key, this.rounds, this.players}) : super(key: key);
+  const GameChart({Key key, this.rounds, this.players, this.colors})
+      : super(key: key);
   @override
   State<StatefulWidget> createState() => GameChartState();
 }
@@ -31,7 +33,8 @@ class GameChartState extends State<GameChart> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-              child: LineChart(chartData(widget.rounds, widget.players)),
+              child: LineChart(
+                  chartData(widget.rounds, widget.players, widget.colors)),
             ),
           ),
           const SizedBox(
@@ -42,8 +45,9 @@ class GameChartState extends State<GameChart> {
     );
   }
 
-  LineChartData chartData(List<Round> roundList, List<String> playerList) {
-    List<LineChartBarData> data = itemData(roundList, playerList);
+  LineChartData chartData(
+      List<Round> roundList, List<String> playerList, List<Color> colors) {
+    List<LineChartBarData> data = itemData(roundList, playerList, colors);
     return LineChartData(
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
@@ -109,7 +113,7 @@ class GameChartState extends State<GameChart> {
   }
 
   List<LineChartBarData> itemData(
-      List<Round> roundList, List<String> playerList) {
+      List<Round> roundList, List<String> playerList, List<Color> colors) {
     List<LineChartBarData> dataList = List();
 
     for (int i = 0; i < playerList.length; i++) {
@@ -126,6 +130,9 @@ class GameChartState extends State<GameChart> {
           spots: pointList,
           isCurved: false,
           barWidth: 1,
+          colors: [
+            colors[i],
+          ],
           dotData: FlDotData(
             show: true,
           ),
