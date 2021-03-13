@@ -52,19 +52,36 @@ void sortScore(List<PlayerScore> scoreList) {
 }
 
 List<int> getRoundsScoreByPlayer(
-    String player, List<Player> playerList, List<Round> roundList) {
+    String player, List<String> playerList, List<Round> roundList) {
   List<int> resultList = List();
+
   int aux = 0;
-  resultList[0] = aux;
-  for (int i = 0; i < playerList.length; i++) {
-    if (player == playerList[i].id) {
-      for (int j = 0; j < roundList.length; j++) {
-        resultList[j + 1] = aux + resultList[j];
+  print('ola00');
+  resultList.insert(0, aux);
+
+  for (var i = 0; i < playerList.length; i++) {
+    if (player == playerList[i]) {
+      for (var j = 1; j < roundList.length; j++) {
+        aux = aux + roundList[j].results[i];
+        resultList.insert(j, aux);
       }
     }
   }
   return resultList;
 }
+
+// int maxScore(List<Round> roundList) {
+//   int maxValue = 0;
+//   for (var i = 0; i < roundList.length; i++) {
+//     for (var j = 0; j < roundList[0].results.length; j++) {
+//       if (maxValue < roundList[i].results[j]) {
+//         maxValue = roundList[i].results[j];
+//       }
+//     }
+//   }
+//   print(maxValue);
+//   return maxValue;
+// }
 
 List<List<PlayerScore>> scoreSeries(
     List<String> playerList, List<Round> roundList) {

@@ -47,7 +47,7 @@ class MatchStats extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                    child: LineChartSample1(),
+                    child: GameChart(rounds: rounds, players: players),
                   )
                 ],
               )

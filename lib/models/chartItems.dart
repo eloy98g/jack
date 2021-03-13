@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './index.dart';
 import '../repositories/index.dart';
 
-LineChartData chartData(List<Round> roundList, List<Player> playerList) {
+LineChartData chartData(List<Round> roundList, List<String> playerList) {
   return LineChartData(
     lineTouchData: LineTouchData(
       touchTooltipData: LineTouchTooltipData(
@@ -35,24 +35,37 @@ LineChartData chartData(List<Round> roundList, List<Player> playerList) {
     ),
     minX: 0,
     maxX: roundList.length.toDouble(),
-    maxY: 4,
+    maxY: 30,
     minY: 0,
     lineBarsData: itemData(roundList, playerList),
   );
 }
 
 List<LineChartBarData> itemData(
-    List<Round> roundList, List<Player> playerList) {
+    List<Round> roundList, List<String> playerList) {
   List<LineChartBarData> dataList = List();
 
   for (int i = 0; i < playerList.length; i++) {
     List<FlSpot> pointList = List();
     List<int> resultList =
-        getRoundsScoreByPlayer(playerList[i].id, playerList, roundList);
+        getRoundsScoreByPlayer(playerList[i], playerList, roundList);
     for (int j = 0; j < resultList.length; j++) {
-      FlSpot((j + 1.toDouble()), resultList[j].toDouble());
+      FlSpot aux = FlSpot((j + 1.toDouble()), resultList[j].toDouble());
+      pointList.insert(j, aux);
     }
 
-    final LineChartBarData lineChartData = LineChartBarData(spots: []);
+    LineChartBarData lineChartData = LineChartBarData(
+      spots: pointList,
+      isCurved: false,
+      barWidth: 1,
+      dotData: FlDotData(
+        show: true,
+      ),
+      belowBarData: BarAreaData(
+        show: false,
+      )
+    );
+
+    dataList.insert(i, lineChartData);
   }
 }
