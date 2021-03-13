@@ -183,41 +183,15 @@ class _RoundEditTab extends State<RoundEditTab> {
                                       ),
                                     )),
                                 onTap: () async {
-                                  if (newResults != null) {
-                                    repository
-                                        .appendRound(
-                                          id: _id,
-                                          date: DateTime.now(),
-                                          matchId: widget.data.id,
-                                          results: newResults,
-                                        )
-                                        .then((value) =>
-                                            Navigator.of(context).pop());
-                                  } else {
-                                    showDialog(
-                                        context: context,
-                                        builder: (buildcontext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                              "Jugadores sin puntuación",
-                                            ),
-                                            actions: <Widget>[
-                                              RaisedButton(
-                                                color: textPrimaryColor,
-                                                child: Text(
-                                                  "Volver",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        });
-                                  }
+                                  repository
+                                      .appendRound(
+                                        id: _id,
+                                        date: DateTime.now(),
+                                        matchId: widget.data.id,
+                                        results: newResults,
+                                      )
+                                      .then((value) =>
+                                          Navigator.of(context).pop());
                                 },
                               )
                             ],
