@@ -12,9 +12,6 @@ class GameChart extends StatefulWidget {
   State<StatefulWidget> createState() => GameChartState();
 }
 
-var minValue = 0;
-var maxValue = 0;
-
 class GameChartState extends State<GameChart> {
   @override
   Widget build(BuildContext context) {
@@ -78,10 +75,37 @@ class GameChartState extends State<GameChart> {
       ),
       minX: 0,
       maxX: roundList.length.toDouble(),
-      maxY: maxValue.toDouble() + 1,
-      minY: minValue.toDouble() - 1,
+      maxY: getMaxValue(roundList, playerList).toDouble() + 1,
+      minY: getMinValue(roundList, playerList).toDouble() - 1,
       lineBarsData: data,
     );
+  }
+
+  int getMaxValue(List<Round> roundList, List<String> playerList) {
+    int maxValue = 0;
+    for (int i = 0; i < playerList.length; i++) {
+      List<int> resultList =
+          getRoundsScoreByPlayer(playerList[i], playerList, roundList);
+      int max = resultList.reduce((curr, next) => curr > next ? curr : next);
+      if (maxValue < max) {
+        maxValue = max;
+      }
+    }
+    return maxValue;
+  }
+
+  int getMinValue(List<Round> roundList, List<String> playerList) {
+    int minValue = 0;
+    for (int i = 0; i < playerList.length; i++) {
+      List<int> resultList =
+          getRoundsScoreByPlayer(playerList[i], playerList, roundList);
+      int min = resultList.reduce((curr, next) => curr < next ? curr : next);
+      if (minValue > min) {
+        minValue = min;
+      }
+    }
+
+    return minValue;
   }
 
   List<LineChartBarData> itemData(
@@ -92,17 +116,6 @@ class GameChartState extends State<GameChart> {
       List<FlSpot> pointList = new List();
       List<int> resultList =
           getRoundsScoreByPlayer(playerList[i], playerList, roundList);
-      int max = resultList.reduce((curr, next) => curr > next ? curr : next);
-      int min = resultList.reduce((curr, next) => curr < next ? curr : next);
-
-      if (maxValue < max) {
-        maxValue = max;
-      }
-      if (minValue > min) {
-        minValue = min;
-      }
-      print(maxValue);
-      print(minValue);
 
       for (int j = 0; j < resultList.length; j++) {
         FlSpot aux = new FlSpot(j.toDouble(), resultList[j].toDouble());
