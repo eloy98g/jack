@@ -32,7 +32,7 @@ class GameChartState extends State<GameChart> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+              padding: const EdgeInsets.only(right: 6.0, left: 6.0),
               child: LineChart(
                   chartData(widget.rounds, widget.players, widget.colors)),
             ),
@@ -63,11 +63,11 @@ class GameChartState extends State<GameChart> {
         show: true,
         border: const Border(
           bottom: BorderSide(
-            color: Colors.red,
+            color: Colors.black,
             width: 1,
           ),
           left: BorderSide(
-            color: Colors.transparent,
+            color: Colors.black,
           ),
           right: BorderSide(
             color: Colors.transparent,

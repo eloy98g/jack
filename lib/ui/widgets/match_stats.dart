@@ -9,7 +9,11 @@ class MatchStats extends StatelessWidget {
   final List<Round> rounds;
   final List<String> players;
 
-  const MatchStats({Key key, this.rounds, this.players}) : super(key: key);
+  const MatchStats({
+    Key key,
+    this.rounds,
+    this.players,
+  }) : super(key: key);
 
   List<Color> getColors(int count) {
     List<Color> colors = <Color>[];
@@ -35,7 +39,6 @@ class MatchStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     List<Color> colors = getColors(players.length);
 
     return Container(
@@ -67,12 +70,49 @@ class MatchStats extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('ola'),
-                      Text('ola'),
+                      Container(
+                        height: 280,
+                        width: 70,
+                        child: SingleChildScrollView(
+                          child: Row(
+                            children: [
+                              Text('ola'),
+                              // Column(
+                              //   children: [
+                              //     ListView.builder(
+                              //       shrinkWrap: true,
+                              //       itemCount: players.length,
+                              //       itemBuilder: (_, index) {
+                              //         return Text(
+                              //           //players[index],
+                              //           'ola',
+                              //           style: TextStyle(
+                              //             //color: colors[index],
+                              //             fontSize: 16,
+                              //           ),
+                              //         );
+                              //       },
+                              //     ),
+                              //   ],
+                              // )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text('button'),
+                        ],
+                      ),
                     ],
                   ),
                   Expanded(
-                    child: GameChart(rounds: rounds, players: players, colors: colors),
+                    flex: 5,
+                    child: GameChart(
+                      rounds: rounds,
+                      players: players,
+                      colors: colors,
+                    ),
                   )
                 ],
               )
