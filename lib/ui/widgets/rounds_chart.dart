@@ -19,13 +19,11 @@ class GameChartState extends State<GameChart> {
   Widget build(BuildContext context) {
     return Container(
       height: 340,
-      margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         color: backgroundThirdColor,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(
             height: 10,

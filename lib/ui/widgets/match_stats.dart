@@ -65,44 +65,68 @@ class MatchStats extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 12),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 280,
                         width: 70,
-                        child: SingleChildScrollView(
-                          child: Row(
-                            children: [
-                              Text('ola'),
-                              // Column(
-                              //   children: [
-                              //     ListView.builder(
-                              //       shrinkWrap: true,
-                              //       itemCount: players.length,
-                              //       itemBuilder: (_, index) {
-                              //         return Text(
-                              //           //players[index],
-                              //           'ola',
-                              //           style: TextStyle(
-                              //             //color: colors[index],
-                              //             fontSize: 16,
-                              //           ),
-                              //         );
-                              //       },
-                              //     ),
-                              //   ],
-                              // )
-                            ],
-                          ),
+                        height: 280,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: players.length,
+                                    itemBuilder: (_, index) {
+                                      return Text(
+                                        players[index],
+                                        style: TextStyle(
+                                          color: colors[index],
+                                          fontSize: 16,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          Text('button'),
-                        ],
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: backgroundThirdColor,
+                          border: Border.all(
+                            color: borderButton,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(45),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 2,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: IconButton(
+                          onPressed: () => null,
+                          icon: Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: textPrimaryColor,
+                            size: 24,
+                          ),
+                        ),
                       ),
                     ],
                   ),
